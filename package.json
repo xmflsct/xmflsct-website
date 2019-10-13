@@ -68,6 +68,6 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "deploy": "gatsby build && gh-pages -d public -b master -u 'Zhiyuan Zheng <me@xmflsct.com>' -r https://${githubPAT}@github.com/xmflsct/xmflsct.github.io.git"
+    "deploy": "gatsby build && yarn run gh-pages -d public -b master -u 'Zhiyuan Zheng <me@xmflsct.com>' -r https://${githubPAT}@github.com/xmflsct/xmflsct.github.io.git"
   }
 }
