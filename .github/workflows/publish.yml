@@ -1,0 +1,18 @@
+name: 'Publish xmflsct.com'
+
+on:
+  push:
+    branches:
+      - gatsby-dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: xmflsct/action-publish-gatsby@v1.0.0
+        with:
+          publishBranch: 'master'
+          token: ${{ secrets.PAT }}
+          name: 'Zhiyuan Zheng'
+          email: 'me@xmflsct.com'
