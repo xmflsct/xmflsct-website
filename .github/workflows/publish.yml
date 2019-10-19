@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - gatsby-dev
+    paths-ignore:
+      - 'static/README.md'
 
 jobs:
   build:
