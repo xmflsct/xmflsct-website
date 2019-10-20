@@ -19,7 +19,7 @@ class CategoryTemplate extends React.Component {
         {this.props.data.site.siteMetadata.description && (
           <header className="page-head">
             <h2 className="page-head-title">
-              Passionate experience designer, currently based in{" "}
+              Passionate and experienced interaction designer, currently based in{" "}
               <a
                 href="https://visitsweden.com/stockholm/"
                 title="Stockholm"

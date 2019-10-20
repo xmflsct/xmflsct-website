@@ -1,4 +1,3 @@
-const urljoin = require("url-join")
 const siteConfig = require("./siteConfig")
 
 module.exports = {
@@ -6,7 +5,7 @@ module.exports = {
     title: siteConfig.name,
     author: siteConfig.author,
     description: siteConfig.description,
-    siteUrl: urljoin(siteConfig.url, siteConfig.prefix),
+    siteUrl: siteConfig.url,
   },
   plugins: [
     {

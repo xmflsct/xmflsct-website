@@ -29,7 +29,7 @@ class ProjectTemplate extends React.Component {
           </header>
 
           <div
-            lassName="post-content-body"
+            className="post-content-body"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
 

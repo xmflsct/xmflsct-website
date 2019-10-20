@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-london",
+  "name": "xmflsct",
   "private": true,
   "description": "A fork from https://github.com/ImedAdel/gatsby-london",
   "version": "1.0.0",
@@ -30,11 +30,6 @@
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
-    "typeface-alegreya": "^0.0.69",
-    "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.54",
-    "typeface-nunito": "^0.0.72",
-    "url-join": "^4.0.1",
     "gatsby-plugin-use-dark-mode": "^1.1.2",
     "use-dark-mode": "^2.3.1"
   },
@@ -50,24 +45,17 @@
     "> 2%"
   ],
   "homepage": "https://xmflsct.github.io",
-  "keywords": [
-    "gatsby",
-    "ghost",
-    "gallery",
-    "blog",
-    "starter"
-  ],
   "license": "MIT",
   "main": "n/a",
+  "keywords": [
+    "xmflsct"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xmflsct/xmflsct.github.io.git"
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "deploy": "gatsby build && yarn run gh-pages -d public -b master -u 'Zhiyuan Zheng <me@xmflsct.com>' -r https://${githubPAT}@github.com/xmflsct/xmflsct.github.io.git"
+    "develop": "gatsby develop"
   }
 }

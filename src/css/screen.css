@@ -15,7 +15,7 @@
 /* ---------------------------------------------------------- */
 
 body {
-    font-family: 'Muli', sans-serif;
+    font-family: var(--font-sans-serif);
     transition: background 0.3s ease-out;
     transition-delay: 0.25;
 }
@@ -196,7 +196,7 @@ body.dark-mode .site-foot a {
     margin: 0;
     padding: 10px 12px;
     color: var(--color-primary-light);
-    font-weight: 600;
+    font-weight: var(--font-bold);
     opacity: 0.5;
 }
 
@@ -223,9 +223,9 @@ body.dark-mode .site-head-right a {
     display: block;
     padding: 10px;
     color: var(--color-primary-light);
-    font-size: 2.1rem;
+    font-size: 2.3rem;
     line-height: 1em;
-    font-weight: 700;
+    font-weight: var(--font-bold);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -300,7 +300,7 @@ body.dark-mode .site-head-logo {
         padding: 1px 0;
         font-size: 2.6rem;
         line-height: 1.15em;
-        font-weight: 200;
+        font-weight: var(--font-light);
         opacity: 0;
         transition: transform 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99),
         opacity 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
@@ -491,7 +491,7 @@ body.dark-mode .post-card-content {
     right: 5vw;
     font-size: 28vw;
     line-height: 1em;
-    font-weight: var(--font-heavy);
+    font-weight: var(--font-bold);
     letter-spacing: -0.1em;
     color: color(var(--color-primary-light) l(+80%));
 }
@@ -537,6 +537,7 @@ body.dark-mode .post-card.no-image:before {
     max-width: 720px;
     margin: 0 auto;
     padding: 6vw 0;
+    font-family: var(--font-serif);
 }
 
 .post-content-header {
@@ -592,9 +593,10 @@ body.dark-mode .post-content-excerpt {
 }
 
 .post-content-body {
-    font-size: 1.9rem;
-    line-height: 1.65em;
+    font-size: 2rem;
+    line-height: 1.66em;
 }
+
 @media (max-width: 500px) {
     .post-content-body {
         font-size: 1.7rem;
@@ -653,7 +655,7 @@ body.dark-mode .post-content-body h6 {
     padding: 0 5px 2px;
     font-size: 0.8em;
     line-height: 1em;
-    font-weight: 400!important;
+    font-weight: var(--font-normal)!important;
     background: var(--color-bg-light);
     border-radius: 3px;
 }
@@ -728,7 +730,7 @@ body.dark-mode .post-content-body pre {
 .footnote-backref {
     color: var(--color-highlight) !important;
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: var(--font-bold);
     text-decoration: none !important;
     box-shadow: none !important;
 }

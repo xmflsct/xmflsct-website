@@ -4,9 +4,6 @@ import useDarkMode from 'use-dark-mode';
 import Header from "../components/header"
 import Footer from "../components/footer"
 
-// import "../utils/normalize.css"
-import "../utils/css/screen.css"
-
 const Layout = props => {
   useDarkMode()
 
