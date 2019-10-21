@@ -497,7 +497,7 @@ body.dark-mode .post-card-content {
 }
 
 body.dark-mode .post-card.no-image:before {
-    color: color(var(--color-primary-dark) l(-80%));
+    color: color(var(--color-primary-dark) l(-60%));
 }
 
 .post-card.no-image .post-card-content {
@@ -634,6 +634,7 @@ body.dark-mode .post-content-body h6 {
 }
 
 .post-content-body blockquote {
+    font-family: var(--font-sans-serif);
     margin: 0 0 1.5em;
     padding: 0 1.5em;
     border-left: (--color-bg-light) 3px solid;
@@ -644,7 +645,6 @@ body.dark-mode .post-content-body h6 {
     color: inherit;
     font-size: inherit;
     line-height: inherit;
-    font-style: italic;
 }
 
 .post-content-body blockquote p:last-child {

@@ -36,17 +36,15 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1280,
+              maxWidth: 1920,
               linkImagesToOriginal: false,
-              wrapperStyle: `margin: 7vw 0;`,
-              quality: 80,
+              quality: 100,
               withWebp: true,
             },
           },
           {
             resolve: "gatsby-remark-embed-video",
             options: {
-              width: 1280,
               ratio: 1.77,
               related: false,
               noIframeBorder: true,
@@ -108,9 +106,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
-        printRejected: true,
+        // printRejected: true,
         develop: true,
-        whitelistPatternsChildren: [/(kg)/, /(dark)/],
+        whitelistPatternsChildren: [/(post)/, /(kg)/, /(dark)/],
       },
     },
     {

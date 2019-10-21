@@ -114,5 +114,5 @@ body.dark-mode .kg-card figcaption {
 .kg-gallery-card + .kg-gallery-card,
 .kg-image-card.kg-width-wide + .kg-gallery-card,
 .kg-image-card.kg-width-wide + .kg-image-card.kg-width-wide {
-    margin-top: calc( -7vw + 0.75em );
+    margin-top: calc(-5vw + 0.75em);
 }
