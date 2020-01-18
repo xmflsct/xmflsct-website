@@ -94,16 +94,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-postcss`,
-      options: {
-        postCssPlugins: [
-          require("postcss-easy-import")(),
-          require("postcss-custom-properties")({ preserve: false }),
-          require("postcss-color-function")()
-        ],
-      },
-    },
-    {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         // printRejected: true,
@@ -135,11 +125,10 @@ module.exports = {
       options: {
         classNameDark: 'dark-mode',
         classNameLight: 'light-mode',
-        storageKey: null,
+        storageKey: 'darkct',
         minify: true,
       },
     },
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`
   ],
