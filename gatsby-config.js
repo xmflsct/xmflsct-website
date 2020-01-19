@@ -67,13 +67,13 @@ module.exports = {
             options: {
               blocks: {
                 kgWidthAvatar: {
-                  classes: "kg-card kg-width-avatar"
+                  classes: "width-avatar"
                 },
                 kgWidthWide: {
-                  classes: "kg-card kg-image-card kg-width-wide",
+                  classes: "width-wide",
                 },
                 kgWidthFull: {
-                  classes: "kg-card kg-image-card kg-width-full",
+                  classes: "width-full",
                 },
               },
             },
@@ -94,14 +94,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        // printRejected: true,
-        develop: true,
-        whitelistPatternsChildren: [/(post)/, /(kg)/, /(dark)/],
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: `UA-49185184-1`,
@@ -121,14 +113,13 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-use-dark-mode',
+      resolve: "gatsby-plugin-sass",
       options: {
-        classNameDark: 'dark-mode',
-        classNameLight: 'light-mode',
-        storageKey: 'darkct',
-        minify: true,
-      },
+        implementation: require("sass"),
+        precision: 6
+      }
     },
+    'gatsby-plugin-use-dark-mode',
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`
   ],

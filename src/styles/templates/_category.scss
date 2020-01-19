@@ -1,0 +1,34 @@
+.category-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 13vw 0 8vw;
+  max-width: 70%;
+  margin: auto;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    @include themed() {
+      color: t('content');
+    }
+
+    a {
+      border-bottom-width: 4px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-medium) {
+  .category-header {
+    h2 {
+      font-size: 1.25rem!important;
+
+      a {
+        border-bottom-width: 2px;
+      }
+    }
+  }
+}

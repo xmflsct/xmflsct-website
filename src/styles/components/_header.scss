@@ -1,0 +1,306 @@
+header {
+  position: relative;
+  z-index: 300;
+  margin-top: -10px;
+  font-size: 0.85rem;
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button.hamburger {
+      display: none;
+    }
+
+    a, button {
+      border: none;
+      @include themed() {
+        color: t('content');
+      }
+    }
+
+    .header-left {
+      display: block;
+      z-index: 99;
+
+      & > ul {
+        display: flex;
+        margin: 0 0 0 -12px;
+        padding: 0;
+
+        & > li {
+          display: block;
+          margin: 0;
+          padding: 0;
+
+          & > ul {
+            position: absolute;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            & > li a {
+              padding: 0 12px 10px;
+            }
+          }
+        }
+      }
+
+      a {
+        display: block;
+        margin: 0;
+        padding: 10px 12px;
+        font-weight: $font-weight-normal;
+        opacity: 0.5;
+      }
+    }
+
+    .header-center {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      a {
+        flex-shrink: 0;
+        display: block;
+        padding: 10px;
+        font-size: 1.3rem;
+        line-height: 1em;
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .header-right {
+      position: relative;
+      z-index: 99;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+
+      .social-links {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        padding-right: 1rem;
+
+        a {
+          display: block;
+          margin: 0;
+          padding: 10px 12px;
+          font-weight: $font-weight-bold;
+          opacity: 0.5;
+        }
+      }
+
+      .dark-mode-toggle {
+        display: flex;
+
+        button {
+          background: none;
+          border: none;
+          opacity: 0.5;
+          padding: 5px 5px 0 5px;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+
+        .toggle-control {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          input[type='checkbox'].dmcheck {
+            width: 25px;
+            height: 14px;
+            opacity: 0.5;
+            position: relative;
+            border-radius: 10px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            vertical-align: 2px;
+            outline: none;
+            @include themed() {
+              background-color: t('content');
+            }
+          
+            &:checked + label {
+              left: 12px;
+            }
+          
+            & + label {
+              display: inline-block;
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              transition: all 0.3s ease;
+              cursor: pointer;
+              position: absolute;
+              left: 2px;
+              @include themed() {
+                background-color: t('background');
+              }
+            }
+          }
+        }
+      }
+    }
+
+    a.active, a:hover {
+      text-decoration: none;
+      opacity: 1!important;
+    }
+  }
+}
+
+$hamburger-padding-x           : 0;
+$hamburger-padding-y           : 12px;
+$hamburger-layer-width         : 20px;
+$hamburger-layer-height        : 1px;
+$hamburger-layer-spacing       : 5px;
+$hamburger-layer-border-radius : 1px;
+
+@media (max-width: $breakpoint-medium) {
+  header {
+    @include themed() {
+      background-color: t('background');
+    }
+
+    .header-container {
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 40px;
+      z-index: -1;
+      transition: all 0.4s ease-out;
+      overflow: hidden;
+
+      button.hamburger {
+        display: block;
+        z-index: 99;
+        position: absolute;
+        left: 0;
+        opacity: 1;
+
+        .hamburger-inner,
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+          @include themed() {
+            background-color: t('content');
+          }
+        }
+      }
+
+      .header-left,
+      .header-right {
+          flex-direction: column;
+          justify-content: flex-start;
+          position: relative;
+          z-index: -1;
+          height: auto;
+          transition: height 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+          transition-delay: 1s;
+
+          a {
+            margin: 10px 0;
+            padding: 1px 0;
+            font-size: 1.6rem;
+            line-height: 1.15em;
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99),
+            opacity 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+            transform: scale(1.1) translateY(-25px);
+          }
+      }
+
+      .header-left {
+        order: 2;
+        margin: 0;
+        width: 100%;
+        padding-top: 5px;
+
+        & > ul {
+          width: 100%;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          margin: 3.3vw 0 0 0;
+
+          & > li > ul {
+            position: relative;
+            padding: 10px 10px 0;
+          }
+        }
+      }
+
+      .header-center {
+        order: 1;
+        position: static;
+        z-index: auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      .header-right {
+        order: 3;
+        width: 100%;
+        margin-top: 3vw;
+
+        .social-links {
+          flex-direction: column;
+          align-items: flex-start;
+          width: 100%;
+
+          a {
+            padding: 5px 0;
+            margin: 1px 0;
+            font-size: 1.25rem;
+          }
+        }
+
+        .dark-mode-toggle {
+          width: 100%;
+          margin-top: 3vw;
+        }
+      }
+    }
+
+    &.header-open {
+      transition: background 0.5s ease-out;
+      transition-delay: 0.25;
+      overflow: hidden;
+      height: 100vh;
+
+      .header-container {
+        height: 100vh;
+        transition: height 0.2s ease-in;
+
+        .header-left,
+        .header-right {
+          z-index: 9999;
+          height: auto;
+          transition: height 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+
+          a {
+            opacity: 0.5;
+            transition: transform 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99),
+            opacity 0.9s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+            transform: scale(1) translateY(0px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@import "hamburgers/hamburgers";

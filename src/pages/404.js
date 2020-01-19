@@ -13,13 +13,13 @@ class NotFoundPage extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="404: Not Found" />
-        <article className={"post-content no-image"}>
-          <header className="post-content-header">
-            <h2 className="post-content-title">404: not found what you need</h2>
+        <article className={"post-content"}>
+          <header className="post-header">
+            <h2 className="post-title">404: not found what you need</h2>
           </header>
           <Img
             fluid={data.image.childImageSharp.fluid}
-            className="kg-image"
+            className="width-wide"
           />
         </article>
       </Layout>

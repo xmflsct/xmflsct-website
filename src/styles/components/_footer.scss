@@ -1,0 +1,14 @@
+footer {
+  margin: 3vw 0 1vw;
+  text-align: center;
+  font-size: 0.9rem;
+  color: lighten($color-light-content, 50%);
+
+  a {
+    color: $color-light-content;
+  }
+}
+
+body.dark-mode footer a {
+  color: $color-dark-content;
+}
