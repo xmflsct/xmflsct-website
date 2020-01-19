@@ -13,10 +13,11 @@ header {
       display: none;
     }
 
-    a, button {
+    a,
+    button {
       border: none;
       @include themed() {
-        color: t('content');
+        color: t("content");
       }
     }
 
@@ -119,7 +120,7 @@ header {
           display: flex;
           align-items: center;
 
-          input[type='checkbox'].dmcheck {
+          input[type="checkbox"] {
             width: 25px;
             height: 14px;
             opacity: 0.5;
@@ -132,13 +133,13 @@ header {
             vertical-align: 2px;
             outline: none;
             @include themed() {
-              background-color: t('content');
+              background-color: t("content");
             }
-          
+
             &:checked + label {
               left: 12px;
             }
-          
+
             & + label {
               display: inline-block;
               width: 10px;
@@ -149,7 +150,7 @@ header {
               position: absolute;
               left: 2px;
               @include themed() {
-                background-color: t('background');
+                background-color: t("background");
               }
             }
           }
@@ -157,32 +158,29 @@ header {
       }
     }
 
-    a.active, a:hover {
+    a.active,
+    a:hover {
       text-decoration: none;
-      opacity: 1!important;
+      opacity: 1 !important;
     }
   }
 }
 
-$hamburger-padding-x           : 0;
-$hamburger-padding-y           : 12px;
-$hamburger-layer-width         : 20px;
-$hamburger-layer-height        : 1px;
-$hamburger-layer-spacing       : 5px;
-$hamburger-layer-border-radius : 1px;
+$hamburger-padding-x: 0;
+$hamburger-padding-y: 12px;
+$hamburger-layer-width: 20px;
+$hamburger-layer-height: 1px;
+$hamburger-layer-spacing: 5px;
+$hamburger-layer-border-radius: 1px;
 
 @media (max-width: $breakpoint-medium) {
   header {
-    @include themed() {
-      background-color: t('background');
-    }
-
     .header-container {
       flex-direction: column;
       justify-content: flex-start;
       height: 40px;
       z-index: -1;
-      transition: all 0.4s ease-out;
+      transition: height 0.4s ease-out;
       overflow: hidden;
 
       button.hamburger {
@@ -196,31 +194,29 @@ $hamburger-layer-border-radius : 1px;
         .hamburger-inner::before,
         .hamburger-inner::after {
           @include themed() {
-            background-color: t('content');
+            background-color: t("content");
           }
         }
       }
 
       .header-left,
       .header-right {
-          flex-direction: column;
-          justify-content: flex-start;
-          position: relative;
-          z-index: -1;
-          height: auto;
-          transition: height 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
-          transition-delay: 1s;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+        z-index: -1;
+        height: auto;
 
-          a {
-            margin: 10px 0;
-            padding: 1px 0;
-            font-size: 1.6rem;
-            line-height: 1.15em;
-            opacity: 0;
-            transition: transform 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99),
+        a {
+          margin: 10px 0;
+          padding: 1px 0;
+          font-size: 1.6rem;
+          line-height: 1.15em;
+          opacity: 0;
+          transition: transform 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99),
             opacity 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
-            transform: scale(1.1) translateY(-25px);
-          }
+          transform: scale(1.1) translateY(-25px);
+        }
       }
 
       .header-left {
@@ -276,25 +272,24 @@ $hamburger-layer-border-radius : 1px;
     }
 
     &.header-open {
-      transition: background 0.5s ease-out;
-      transition-delay: 0.25;
       overflow: hidden;
-      height: 100vh;
+
+      & ~ main, & ~ footer {
+        display: none;
+      }
 
       .header-container {
-        height: 100vh;
-        transition: height 0.2s ease-in;
+        height: auto;
 
         .header-left,
         .header-right {
           z-index: 9999;
           height: auto;
-          transition: height 0.2s cubic-bezier(0.4, 0.01, 0.165, 0.99);
 
           a {
             opacity: 0.5;
             transition: transform 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99),
-            opacity 0.9s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+              opacity 0.9s cubic-bezier(0.4, 0.01, 0.165, 0.99);
             transform: scale(1) translateY(0px);
           }
         }

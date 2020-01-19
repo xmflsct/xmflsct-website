@@ -122,13 +122,12 @@ const Header = ({ category }) => {
             </button>
             <span className="toggle-control">
               <input
-                className="dmcheck"
                 type="checkbox"
                 checked={darkMode.value}
                 onChange={darkMode.toggle}
-                id="dmcheck"
+                id="toggle-bar"
               />
-              <label htmlFor="dmcheck" />
+              <label htmlFor="toggle-bar" />
             </span>
             <button type="button" onClick={darkMode.enable}>
               ☾

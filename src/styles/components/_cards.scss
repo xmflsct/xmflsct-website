@@ -1,7 +1,12 @@
 body.dark-mode {
   .cards-feed {
     .project-card {
-      background: linear-gradient(135deg, lighten($color-dark-background, 10%) 0%, $color-dark-background 100%) center center;
+      background: linear-gradient(
+          135deg,
+          lighten($color-dark-background, 10%) 0%,
+          $color-dark-background 100%
+        )
+        center center;
     }
   }
 }
@@ -16,7 +21,12 @@ body.dark-mode {
     flex: 1 1 50%;
     display: flex;
     height: 35vw;
-    background: linear-gradient(135deg, $color-light-background 0%, darken($color-light-background, 10%) 100%) center center;
+    background: linear-gradient(
+        135deg,
+        $color-light-background 0%,
+        darken($color-light-background, 10%) 100%
+      )
+      center center;
     background-size: cover;
     overflow: hidden;
     counter-increment: posts;
@@ -38,15 +48,15 @@ body.dark-mode {
         bottom: 0;
         left: 0;
         opacity: 0;
-        transition: opacity 0.5s cubic-bezier(.33,0,.2,1);
+        transition: opacity 0.5s cubic-bezier(0.33, 0, 0.2, 1);
         @include themed() {
-          color: t('content');
-          background-color: t('background');
+          color: t("content");
+          background-color: t("background");
         }
 
         &:hover {
           opacity: 0.8;
-          transition: opacity 0.3s cubic-bezier(.33,0,.2,1);
+          transition: opacity 0.3s cubic-bezier(0.33, 0, 0.2, 1);
         }
 
         .project-card-title {
@@ -56,7 +66,7 @@ body.dark-mode {
           line-height: 1.15em;
           max-width: 70%;
           text-align: center;
-          transition: all 0.3s cubic-bezier(.33,0,.2,1);
+          transition: all 0.3s cubic-bezier(0.33, 0, 0.2, 1);
         }
       }
     }
@@ -68,7 +78,7 @@ body.dark-mode {
 
     &.no-image {
       display: block;
-    
+
       &::before {
         display: block;
         content: counter(posts);
@@ -82,28 +92,28 @@ body.dark-mode {
         z-index: 99;
         opacity: 0.1;
         @include themed() {
-          color: t('content');
+          color: t("content");
         }
       }
-    
+
       .project-card-content {
         justify-content: flex-start;
         align-items: flex-start;
         padding: 4vw;
         opacity: 1;
-        background: none!important;
-        
+        background: none !important;
+
         &:hover {
           opacity: 1;
         }
-    
+
         .project-card-title {
           font-size: 3rem;
           line-height: 1.15em;
           text-align: left;
         }
       }
-    
+
       &:hover {
         .project-card-title {
           text-decoration: underline;
@@ -115,26 +125,26 @@ body.dark-mode {
 
 @media (max-width: $breakpoint-medium) {
   .project-card {
-    flex: 1 1 100%!important;
-    height: 70vw!important;
+    flex: 1 1 100% !important;
+    height: 70vw !important;
 
     &.with-image .project-card-content {
-      opacity: 0.8!important;
+      opacity: 0.8 !important;
     }
 
     &.no-image::before {
-      font-size: 50vw!important;
-      bottom: -1.5rem!important;
+      font-size: 50vw !important;
+      bottom: -1.5rem !important;
     }
 
     .project-card-title {
-      font-size: 1.5em!important;
-  }
+      font-size: 1.5em !important;
+    }
   }
 }
 
 @media (max-width: $breakpoint-xlarge) {
   .project-card.no-image .project-card-title {
-      font-size: 2rem!important;
+    font-size: 2rem !important;
   }
 }

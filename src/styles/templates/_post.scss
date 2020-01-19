@@ -45,7 +45,7 @@
       padding: 0 1.5em;
       border-left: 3px solid;
       @include themed() {
-        border-left-color: t('content');
+        border-left-color: t("content");
       }
 
       p {
@@ -55,7 +55,7 @@
 
     .custom-block {
       margin: 3vw 0;
-    
+
       &.width-avatar {
         position: relative;
         width: 25vw;
@@ -64,12 +64,12 @@
         transform: translateX(calc(50vw - 50%));
         margin-top: 3vw;
         margin-bottom: 3vw;
-    
+
         img {
           border-radius: 100%;
         }
       }
-    
+
       &.width-wide {
         position: relative;
         width: 75vw;
@@ -78,7 +78,7 @@
         margin-right: calc(50% - 50vw);
         transform: translateX(calc(50vw - 50%));
       }
-    
+
       &.width-full {
         position: relative;
         width: 94vw;
@@ -95,7 +95,7 @@
   .post-content {
     .post-header {
       .post-title {
-        font-size: 1.65em!important;
+        font-size: 1.65em !important;
         margin: 1em 0;
 
         sup {
@@ -106,7 +106,7 @@
       }
     }
     .post-body {
-        font-size: 1rem!important;
+      font-size: 1rem !important;
     }
   }
 }

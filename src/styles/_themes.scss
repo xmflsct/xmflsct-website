@@ -1,12 +1,12 @@
 $themes: (
   light: (
     content: $color-light-content,
-    background: $color-light-background,
+    background: $color-light-background
   ),
   dark: (
     content: $color-dark-content,
-    background: $color-dark-background,
-  ),
+    background: $color-dark-background
+  )
 );
 
 @mixin themed() {
@@ -14,8 +14,13 @@ $themes: (
     .#{$theme}-mode & {
       $theme-map: () !global;
       @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), '#{$key}');
-        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value
+          )
+        ) !global;
       }
       @content;
       $theme-map: null !global;

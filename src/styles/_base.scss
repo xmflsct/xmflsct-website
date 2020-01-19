@@ -1,6 +1,8 @@
 body {
   font-family: $font-sans-serif;
   font-weight: $font-weight-normal;
+  transition: background 0.5s ease-out;
+  transition-delay: 0.25;
 
   &.light-mode {
     color: $color-light-content;
@@ -22,26 +24,32 @@ body {
 @media (max-width: $breakpoint-medium) {
   body {
     .site-wrapper {
-        padding: 6vw;
+      padding: 6vw;
     }
   }
 }
 
-a{
+a {
   text-decoration: none;
   @include themed() {
-    color: t('content');
+    color: t("content");
   }
 
   border-bottom: 2px $color-highlight solid;
 }
 
-a:hover, a:active {
+a:hover,
+a:active {
   color: $color-highlight;
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: $font-weight-normal;
 }
 
@@ -55,10 +63,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes slideUp {
-0% {
-  transform: translate3d(0, 4vh, 0);
-}
-100% {
-  transform: translate3d(0, 0, 0);
-}
+  0% {
+    transform: translate3d(0, 4vh, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
