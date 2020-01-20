@@ -47,6 +47,7 @@ const Cards = ({ filter }) => {
               <article
                 className={`project-card with-image ${(index + 1) % 3 === 0 &&
                   `project-card-large`}`}
+                key={index}
               >
                 <Img
                   css={{ top: 0, left: 0, right: 0, bottom: 0 }}
@@ -59,8 +60,9 @@ const Cards = ({ filter }) => {
                 />
                 <Link to={node.fields.slug} className="project-card-link">
                   <div className="project-card-content">
+                    <h6 className="project-card-category">{node.frontmatter.category}</h6>
                     <h2 className="project-card-title">
-                      {node.frontmatter.title || node.fields.slug}
+                      {node.frontmatter.title || node.fields.slug}<br />
                     </h2>
                   </div>
                 </Link>
@@ -71,9 +73,11 @@ const Cards = ({ filter }) => {
               <article
                 className={`project-card no-image ${(index + 1) % 3 === 0 &&
                   `project-card-large`}`}
+                key={index}
               >
                 <Link to={node.fields.slug} className="project-card-link">
                   <div className="project-card-content">
+                  <h6 className="project-card-category">{node.frontmatter.category}</h6>
                     <h2 className="project-card-title">
                       {node.frontmatter.title || node.fields.slug}
                     </h2>

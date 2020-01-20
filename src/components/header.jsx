@@ -57,15 +57,15 @@ const Header = ({ category }) => {
             <span className="hamburger-inner"></span>
           </span>
         </button>
-        <nav class="header-left">
+        <nav className="header-left">
           <ul role="menu">
             <li role="menuitem">
               <Link to={`/`} activeClassName="active">
                 All Projects
               </Link>
               <ul>
-                {data.allCategories.group.map(({ fieldValue }) => (
-                  <li>
+                {data.allCategories.group.map(({ fieldValue }, index) => (
+                  <li key={index}>
                     <Link
                       to={"/" + fieldValue.toLowerCase()}
                       activeClassName="active"
@@ -77,8 +77,8 @@ const Header = ({ category }) => {
                 ))}
               </ul>
             </li>
-            {data.allPages.edges.map(({ node }) => (
-              <li role="menuitem">
+            {data.allPages.edges.map(({ node }, index) => (
+              <li role="menuitem" key={index}>
                 <Link to={node.fields.slug} activeClassName="active">
                   {node.frontmatter.name}
                 </Link>

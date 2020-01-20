@@ -6,16 +6,24 @@ thumbnail: ./hm-in-store-mode-00.png
 description: A new shopping experience! Activate In-Store Mode in the H&M App next time you're shopping in store. Connect to the store's assortment, see if the items you favourited online are in stock, find available sizes, colours and more.
 ---
 
-A new shopping experience! Activate In-Store Mode in the H&M App next time you're shopping in store. Connect to the store's assortment, see if the items you favourited online are in stock, find available sizes, colours and more.
+A new shopping experience! Activate [In-Store Mode](https://hmgroup.com/media/news/general-news-2019/h-m-climbs-to-second-place-in-retail-week-indicator.html) in the H&M App next time you're shopping in store. Connect to the store's assortment, see if the items you favourited online are in stock, find available sizes, colours and more.
 
 [[kgWidthFull]]
 | `youtube:BCmtnDMzuzg`
+| ###### © H&M Group production
+
+I worked as the lead UX designer for this initiative, taking over previous global research on customer offering expectations and transform the needs into actionable MVP.
+
+Challenges came from both internal process constraints as well as a brand new mental model of what this "mode" is about. To better understand its potentials, in store context interviews were conducted, using mock-ups to observe and empathize how customers could connect ability enhancements through digital with well-known physical presence.
 
 [[kgWidthWide]]
 | ![In-Store Mode 0](./hm-in-store-mode-00.png)
+| ###### © H&M Group production
 
 [[kgWidthWide]]
 | ![In-Store Mode 1](./hm-in-store-mode-01.png)
+| ###### © H&M Group production
 
 [[kgWidthWide]]
 | ![In-Store Mode 2](./hm-in-store-mode-02.png)
+| ###### © H&M Group production

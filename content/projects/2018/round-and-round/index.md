@@ -1,6 +1,6 @@
 ---
 title: Round&Round Rotterdam
-date: "2018-11-01"
+date: "2018-10-01"
 category: Website
 thumbnail: ./round-and-round-00.png
 description: Round&Round Rotterdam
@@ -9,6 +9,14 @@ description: Round&Round Rotterdam
 > **Client**
 >
 > [Round&Round Rotterdam](https://roundandround.nl/)
+>
+> **Source Code**
+>
+> [at Github](https://github.com/xmflsct/roundandround.github.io)
+
+Built, maintained and improved over 4 years time, this project serves as a forefront to excite customers.
+
+It started as a Wordpress based project. And recently it has been full re-written using React that becomes static (with dynamic online order support), which conserves unnecessary energy of running a full dynamic site, for a better world.
 
 [[kgWidthWide]]
 | ![Round and Round 0](./round-and-round-00.png)

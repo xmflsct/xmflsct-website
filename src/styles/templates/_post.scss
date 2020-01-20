@@ -50,6 +50,10 @@
 
       p {
         margin: 0;
+
+        &:nth-child(even) {
+          margin-bottom: 1.5rem;
+        }
       }
     }
 
@@ -86,6 +90,17 @@
         margin-left: calc(50% - 50vw);
         margin-right: calc(50% - 50vw);
         transform: translateX(calc(50vw - 50%));
+      }
+
+      // Fix paragraph auto added before h6
+      p {
+        margin-bottom: 0.5rem;
+      }
+
+      h6 {
+        text-align: center;
+        font-family: $font-sans-serif;
+        opacity: 0.35;
       }
     }
   }

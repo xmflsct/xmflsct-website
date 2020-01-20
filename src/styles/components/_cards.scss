@@ -59,6 +59,17 @@ body.dark-mode {
           transition: opacity 0.3s cubic-bezier(0.33, 0, 0.2, 1);
         }
 
+        .project-card-category {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          padding: 0.25rem 0.5rem;
+          border: 1px solid;
+          @include themed () {
+            border-color: t('content');
+          }
+        }
+
         .project-card-title {
           margin: 0;
           display: inline-block;
@@ -98,7 +109,6 @@ body.dark-mode {
 
       .project-card-content {
         justify-content: flex-start;
-        align-items: flex-start;
         padding: 4vw;
         opacity: 1;
         background: none !important;

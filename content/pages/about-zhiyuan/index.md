@@ -1,8 +1,8 @@
 ---
-title: Hi, I'm Zhiyuan!
+title: Hej, I'm Zhiyuan!
 name: About Zhiyuan
 page_order: 2
-description: TEST
+description: Zhiyuan, the experience designer
 ---
 
 [[kgWidthAvatar]]
