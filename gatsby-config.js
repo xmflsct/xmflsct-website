@@ -96,18 +96,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: siteConfig.name,
-        short_name: siteConfig.shortName,
-        start_url: siteConfig.prefix,
-        background_color: `#ffffff`,
-        theme_color: `#ffffff`,
-        display: `minimal-ui`,
-        icon: `static/favicon.png`,
-      },
-    },
-    {
       resolve: "gatsby-plugin-sass",
       options: {
         implementation: require("sass"),
