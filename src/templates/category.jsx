@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Cards from "../components/cards"
 
-class CategoryTemplate extends React.Component {
+class TemplateCategory extends React.Component {
   render() {
     return (
       <Layout
@@ -38,10 +38,10 @@ class CategoryTemplate extends React.Component {
   }
 }
 
-export default CategoryTemplate
+export default TemplateCategory
 
 export const pageQuery = graphql`
-  query {
+  query QueryCategory{
     site {
       siteMetadata {
         title

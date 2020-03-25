@@ -1,12 +1,13 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
-class PageTemplate extends React.Component {
+class TemplatePage extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
+    const post = this.props.data.mdx;
 
     return (
       <Layout
@@ -22,32 +23,31 @@ class PageTemplate extends React.Component {
             <h2 className="post-title">{post.frontmatter.title}</h2>
           </header>
 
-          <div
-            className="post-body"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <div className="post-body">
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </div>
         </article>
       </Layout>
-    )
+    );
   }
 }
 
-export default PageTemplate
+export default TemplatePage;
 
 export const pageQuery = graphql`
-  query PageBySlug($slug: String!) {
+  query Page($id: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(id: { eq: $id }) {
       excerpt(pruneLength: 160)
-      html
       frontmatter {
         title
         description
       }
+      body
     }
   }
-`
+`;

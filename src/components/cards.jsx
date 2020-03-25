@@ -6,7 +6,7 @@ import Img from "gatsby-image";
 const Cards = ({ filter }) => {
   const data = useStaticQuery(graphql`
     {
-      allProjects: allMarkdownRemark(
+      allProjects: allMdx(
         sort: { fields: [frontmatter___date], order: DESC }
         filter: { fileAbsolutePath: { regex: "/(projects)/" } }
       ) {

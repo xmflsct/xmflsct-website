@@ -1,28 +1,27 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
-  const pageTemplate = path.resolve(`./src/templates/page.jsx`)
-  const projectTemplate = path.resolve(`./src/templates/project.jsx`)
-  const categoryTemplate = path.resolve(`./src/templates/category.jsx`)
+  const templatePage = path.resolve(`./src/templates/page.jsx`);
+  const templateProject = path.resolve(`./src/templates/project.jsx`);
+  const templateCategory = path.resolve(`./src/templates/category.jsx`);
 
   return graphql(
     `
       {
-        allPages: allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/pages/" } }
-        ) {
+        allPages: allMdx(filter: { fileAbsolutePath: { regex: "/pages/" } }) {
           edges {
             node {
               fields {
                 slug
               }
+              id
             }
           }
         }
-        allProjects: allMarkdownRemark(
+        allProjects: allMdx(
           sort: { fields: [frontmatter___date], order: DESC }
           filter: { fileAbsolutePath: { regex: "/projects/" } }
         ) {
@@ -31,10 +30,11 @@ exports.createPages = ({ graphql, actions }) => {
               fields {
                 slug
               }
+              id
             }
           }
         }
-        allCategories: allMarkdownRemark(
+        allCategories: allMdx(
           filter: { fileAbsolutePath: { regex: "/(projects)/" } }
         ) {
           group(field: frontmatter___category) {
@@ -45,64 +45,71 @@ exports.createPages = ({ graphql, actions }) => {
     `
   ).then(result => {
     if (result.errors) {
-      throw result.errors
+      throw result.errors;
     }
 
-    const pages = result.data.allPages.edges
-    const projects = result.data.allProjects.edges
-    const categories = result.data.allCategories.group
+    const pages = result.data.allPages.edges;
+    const projects = result.data.allProjects.edges;
+    const categories = result.data.allCategories.group;
 
-    pages.forEach((page, index) => {
+    pages.forEach(page => {
       createPage({
         path: page.node.fields.slug,
-        component: pageTemplate,
+        component: templatePage,
         context: {
-          slug: page.node.fields.slug,
-        },
-      })
-    })
+          id: page.node.id
+        }
+      });
+    });
 
-    projects.forEach((project, index) => {
+    projects.forEach(project => {
       createPage({
         path: project.node.fields.slug,
-        component: projectTemplate,
+        component: templateProject,
         context: {
-          slug: project.node.fields.slug,
-        },
-      })
-    })
+          id: project.node.id
+        }
+      });
+    });
 
     createPage({
       path: "/",
-      component: categoryTemplate,
+      component: templateCategory,
       context: {
-        category: "*",
-      },
-    })
+        category: "*"
+      }
+    });
 
-    categories.forEach((category, index) => {
+    categories.forEach(category => {
       createPage({
         path: category.fieldValue.replace(/\s+/g, "-").toLowerCase(),
-        component: categoryTemplate,
+        component: templateCategory,
         context: {
-          category: category.fieldValue,
-        },
-      })
-    })
+          category: category.fieldValue
+        }
+      });
+    });
 
-    return null
-  })
-}
+    return null;
+  });
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+  const { createNodeField } = actions;
+  if (node.internal.type === `Mdx`) {
+    const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
       node,
-      value,
-    })
+      value
+    });
   }
-}
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, "src"), "node_modules"]
+    }
+  });
+};

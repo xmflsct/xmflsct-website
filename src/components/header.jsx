@@ -19,14 +19,14 @@ const Header = ({ category }) => {
           title
         }
       }
-      allCategories: allMarkdownRemark(
+      allCategories: allMdx(
         filter: { fileAbsolutePath: { regex: "/(projects)/" } }
       ) {
         group(field: frontmatter___category) {
           fieldValue
         }
       }
-      allPages: allMarkdownRemark(
+      allPages: allMdx(
         sort: { fields: [frontmatter___page_order], order: ASC }
         filter: { fileAbsolutePath: { regex: "/pages/" } }
       ) {

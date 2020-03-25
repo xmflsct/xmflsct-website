@@ -1,13 +1,19 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { handleLogin, isLoggedIn } from "../components/auth";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
-class ProjectTemplate extends React.Component {
+class TemplateProject extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { secret: null, allowed: isLoggedIn() };
+  }
+
   render() {
-    const post = this.props.data.markdownRemark
-
+    const post = this.props.data.mdx;
     return (
       <Layout
         location={this.props.location}
@@ -28,34 +34,55 @@ class ProjectTemplate extends React.Component {
             </h2>
           </header>
 
-          <div
-            className="post-body"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          {!post.frontmatter.limited || this.state.allowed ? (
+            <div className="post-body">
+              <MDXRenderer>{post.body}</MDXRenderer>
+            </div>
+          ) : (
+            <div className="post-body secret">
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  handleLogin(this.state);
+                  this.setState({ allowed: isLoggedIn() });
+                }}
+              >
+                <input
+                  className="textbox"
+                  type="password"
+                  placeholder="Secret"
+                  size={12}
+                  onChange={e => this.setState({ secret: e.target.value })}
+                />
+                <input className="button" type="submit" value="View" />
+              </form>
+            </div>
+          )}
         </article>
       </Layout>
-    )
+    );
   }
 }
 
-export default ProjectTemplate
+export default TemplateProject;
 
 export const pageQuery = graphql`
-  query ProjectBySlug($slug: String!) {
+  query QueryProject($id: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(id: { eq: $id }) {
       excerpt(pruneLength: 160)
-      html
       frontmatter {
         title
         date(formatString: "YYYY")
         description
         category
+        limited
       }
+      body
     }
   }
-`
+`;
