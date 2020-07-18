@@ -149,6 +149,7 @@ header {
               cursor: pointer;
               position: absolute;
               left: 2px;
+              margin: 0;
               @include themed() {
                 background-color: t("background");
               }
