@@ -107,4 +107,8 @@
   article .image-fix p {
     @apply mb-0;
   }
+
+  .avatar p > span {
+    @apply w-2/5 rounded-full overflow-hidden;
+  }
 }
