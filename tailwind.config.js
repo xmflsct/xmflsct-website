@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./src/**/*.jsx'],
+  purge: ['./src/**/*.jsx', './src/**/*.mdx'],
   theme: {
     fontFamily: {
       sans: ['Source Sans Pro', 'sans-serif'],
