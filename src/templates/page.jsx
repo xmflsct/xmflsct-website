@@ -1,53 +1,32 @@
-import React from "react";
-import { graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import React from 'react'
+import { graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Layout from '../components/layout'
 
-class TemplatePage extends React.Component {
-  render() {
-    const post = this.props.data.mdx;
+const Page = ({ data: { mdx } }) => {
+  return (
+    <Layout>
+      <article>
+        <h1 className='text-center font-serif'>{mdx.frontmatter.title}</h1>
 
-    return (
-      <Layout
-        location={this.props.location}
-        title={this.props.data.site.siteMetadata.title}
-      >
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
-        <article className={"post-content"}>
-          <header className="post-header">
-            <h2 className="post-title">{post.frontmatter.title}</h2>
-          </header>
-
-          <div className="post-body">
-            <MDXRenderer>{post.body}</MDXRenderer>
-          </div>
-        </article>
-      </Layout>
-    );
-  }
+        <div className='mt-4 lg:mt-8 lg:px-48'>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </div>
+      </article>
+    </Layout>
+  )
 }
-
-export default TemplatePage;
 
 export const pageQuery = graphql`
   query Page($id: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     mdx(id: { eq: $id }) {
-      excerpt(pruneLength: 160)
       frontmatter {
         title
-        description
       }
       body
     }
   }
-`;
+`
+
+export default Page

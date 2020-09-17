@@ -1,11 +1,9 @@
-const siteConfig = require("./siteConfig");
-
 module.exports = {
   siteMetadata: {
-    title: siteConfig.name,
-    author: siteConfig.author,
-    description: siteConfig.description,
-    siteUrl: siteConfig.url
+    title: 'Zhiyuan',
+    description:
+      'Passionate experience designer, currently based in Stockholm.',
+    siteUrl: 'https://xmflsct.com'
   },
   plugins: [
     {
@@ -17,34 +15,52 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     {
-      resolve: "gatsby-plugin-sass",
+      resolve: 'gatsby-plugin-sass',
       options: {
-        implementation: require("sass"),
-        precision: 6
+        postCssPlugins: [
+          require('tailwindcss'),
+          require('./tailwind.config.js')
+        ]
       }
     },
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sitemap`,
-    "gatsby-plugin-use-dark-mode",
+    {
+      resolve: 'gatsby-plugin-use-dark-mode',
+      options: {
+        minify: true
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: [
+            'Source Sans Pro:200,400,600',
+            'Source Serif Pro:200,400,600'
+          ]
+        }
+      }
+    },
     `gatsby-remark-images`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/pages`,
+        path: `${__dirname}/src/content/pages`,
         name: `pages`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/projects`,
+        path: `${__dirname}/src/content/projects`,
         name: `projects`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
+        path: `${__dirname}/src/content/assets`,
         name: `assets`
       }
     },
@@ -62,10 +78,10 @@ module.exports = {
             }
           },
           {
-            resolve: "gatsby-remark-external-links",
+            resolve: 'gatsby-remark-external-links',
             options: {
-              target: "_blank",
-              rel: "noopener noreferrer"
+              target: '_blank',
+              rel: 'noopener noreferrer'
             }
           },
           `gatsby-remark-copy-linked-files`,
@@ -75,4 +91,4 @@ module.exports = {
     },
     `gatsby-transformer-sharp`
   ]
-};
+}

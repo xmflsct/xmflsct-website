@@ -1,9 +1,110 @@
-@import "variables";
-@import "themes";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "base";
-@import "components/header";
-@import "components/footer";
-@import "components/cards";
-@import "templates/category";
-@import "templates/post";
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  h4 {
+    @apply text-base;
+  }
+  @screen lg {
+    h1 {
+      @apply text-5xl;
+    }
+    h2 {
+      @apply text-3xl;
+    }
+    h3 {
+      @apply text-2xl;
+    }
+    h4 {
+      @apply text-lg;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    a {
+      @apply border-b-2;
+    }
+  }
+  @screen lg {
+    h1,
+    h2,
+    h3,
+    h4 {
+      a {
+        @apply border-b-4;
+      }
+    }
+  }
+
+  a {
+    @apply border-b-2 border-highlight transition duration-150 ease-in-out;
+
+    &:hover {
+      @apply text-highlight;
+    }
+  }
+
+  body {
+    @apply min-h-screen font-sans transition-colors duration-300 ease-in-out;
+
+    header {
+      @apply transition-colors duration-300 ease-in-out;
+
+      a,
+      button {
+        @apply border-0 opacity-50 transition duration-150 ease-in-out;
+
+        &:hover,
+        &.active {
+          @apply opacity-100;
+        }
+      }
+    }
+
+    &.light-mode {
+      @apply text-light bg-light-bg;
+
+      header {
+        @apply text-light bg-light-bg;
+
+        a {
+          &:hover,
+          &.active {
+            @apply text-light;
+          }
+        }
+      }
+    }
+    &.dark-mode {
+      @apply text-dark bg-dark-bg;
+
+      header {
+        @apply text-dark bg-dark-bg;
+
+        a {
+          &:hover,
+          &.active {
+            @apply text-dark;
+          }
+        }
+      }
+    }
+  }
+
+  article .image-fix p {
+    @apply mb-0;
+  }
+}
