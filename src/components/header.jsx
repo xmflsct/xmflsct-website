@@ -21,7 +21,6 @@ const Header = ({ category }) => {
   const darkMode = useDarkMode(false)
   const isSmallScreen = useMediaQuery({ query: '(max-width: 1024px)' })
   const pathname = useLocation().pathname
-  console.log(pathname)
 
   const data = useStaticQuery(graphql`
     {

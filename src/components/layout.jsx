@@ -1,17 +1,22 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import { MDXProvider } from '@mdx-js/react'
-import useDarkMode from 'use-dark-mode'
 
 import Header from './header'
 import Footer from './footer'
 
 const Layout = ({ category, children }) => {
-  useDarkMode()
-
   return (
     <div className='pb-4 lg:px-10 lg:pb-8'>
       <Header category={category} />
-      <main className='max-w-screen-xl mx-auto px-4 mt-4 lg:mt-12'>
+      <motion.main
+        className='max-w-screen-xl mx-auto px-4 mt-4 lg:mt-12'
+        key={Math.random()}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.35 }}
+      >
         <MDXProvider
           components={{
             h2: props => <h2 {...props} className='font-serif' />,
@@ -33,7 +38,7 @@ const Layout = ({ category, children }) => {
         >
           {children}
         </MDXProvider>
-      </main>
+      </motion.main>
       <Footer />
     </div>
   )
