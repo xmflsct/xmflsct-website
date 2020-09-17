@@ -42,7 +42,6 @@ module.exports = {
         }
       }
     },
-    `gatsby-remark-images`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -71,10 +70,11 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1920,
+              maxWidth: 1080,
               linkImagesToOriginal: false,
-              quality: 90,
-              withWebp: true
+              quality: 100,
+              withWebp: true,
+              backgroundColor: 'none'
             }
           },
           {

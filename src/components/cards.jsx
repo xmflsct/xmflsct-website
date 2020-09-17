@@ -18,7 +18,10 @@ const Cards = ({ filter }) => {
               category
               thumbnail {
                 childImageSharp {
-                  fluid(maxWidth: 1280) {
+                  half: fluid(maxWidth: 624, quality: 90) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                  full: fluid(maxWidth: 1248, quality: 90) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
@@ -52,7 +55,11 @@ const Cards = ({ filter }) => {
               >
                 <Img
                   className='absolute inset-0 w-full h-full'
-                  fluid={node.frontmatter.thumbnail.childImageSharp.fluid}
+                  fluid={
+                    (index + 1) % 3 === 0
+                      ? node.frontmatter.thumbnail.childImageSharp.full
+                      : node.frontmatter.thumbnail.childImageSharp.half
+                  }
                 />
                 <Link
                   to={node.slug}
