@@ -4,6 +4,7 @@ import {
   Linkedin,
   GitHub,
   Instagram,
+  ArrowDown,
   ArrowLeft,
   ChevronDown,
   Moon,
@@ -12,12 +13,15 @@ import {
 } from 'react-feather'
 import { useMediaQuery } from 'react-responsive'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation } from '@reach/router'
 import useDarkMode from 'use-dark-mode'
 
 const Header = ({ category }) => {
   const [toggleMenu, setToggleMenu] = useState(false)
   const darkMode = useDarkMode(false)
   const isSmallScreen = useMediaQuery({ query: '(max-width: 1024px)' })
+  const pathname = useLocation().pathname
+  console.log(pathname)
 
   const data = useStaticQuery(graphql`
     {
@@ -92,11 +96,19 @@ const Header = ({ category }) => {
       </div>
 
       <div className='lg:flex-1 order-1 lg:order-2 flex justify-center'>
-        <Link to={`/about-zhiyuan`} className='lg:flex-1 text-right leading-9'>
-          <div className='pr-3'>
-            <ArrowLeft size='1em' className='inline' /> About
+        {pathname.startsWith('/about-zhiyuan') ? (
+          <div className='lg:flex-1 text-right leading-9 pr-3'>
+            <ArrowDown size='1em' className='inline' /> About
           </div>
-        </Link>
+        ) : (
+          <Link
+            to={`/about-zhiyuan`}
+            activeClassName='active'
+            className='lg:flex-1 text-right leading-9 pr-3'
+          >
+            <ArrowLeft size='1em' className='inline' /> About
+          </Link>
+        )}
         <Link to={`/`} className='opacity-100 text-2xl font-semibold'>
           ZHIYUAN
         </Link>
@@ -108,7 +120,7 @@ const Header = ({ category }) => {
               }}
               className={`pl-3 lg:pr-4 relative z-50 focus:outline-none ${
                 toggleMenu ? 'opacity-100' : ''
-              }`}
+              } ${category !== '*' && 'opacity-100'}`}
             >
               designs {category === '*' ? 'below' : category.toLowerCase()}
               <motion.span
@@ -150,6 +162,7 @@ const Header = ({ category }) => {
                     <Link
                       to={`/${fieldValue.toLowerCase()}`}
                       activeClassName='active'
+                      className={category === fieldValue && 'active'}
                     >
                       <span className='hidden lg:inline-block opacity-0'>
                         designs

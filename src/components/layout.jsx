@@ -5,7 +5,7 @@ import useDarkMode from 'use-dark-mode'
 import Header from './header'
 import Footer from './footer'
 
-const Layout = ({ children, category }) => {
+const Layout = ({ category, children }) => {
   useDarkMode()
 
   return (
