@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: 'Zhiyuan',
+    title: "Zhiyuan' Portfolio",
     description:
-      'Passionate experience designer, currently based in Stockholm.',
-    siteUrl: 'https://xmflsct.com'
+      'A passionate and experienced product designer with a cross-cultural background of China 🇨🇳, the Netherlands 🇳🇱 and Sweden 🇸🇪. Constantly reaching out to experience cultural differences, and further reflecting upon the perception between human, human and machine.',
+    url: 'https://xmflsct.com'
   },
   plugins: [
     {
