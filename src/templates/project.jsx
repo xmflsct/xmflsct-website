@@ -4,19 +4,58 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Layout from '../components/layout'
 
-const Project = ({ data: { mdx } }) => {
+const Project = ({ data }) => {
   return (
-    <Layout category={mdx.frontmatter.category}>
+    <Layout
+      category={data.mdx.frontmatter.category}
+      title={data.mdx.frontmatter.title}
+      description={data.mdx.excerpt}
+      schema={[
+        {
+          '@context': 'http://schema.org',
+          '@type': 'Article',
+          headline: data.mdx.frontmatter.title,
+          image:
+            data.site.siteMetadata.url + data.mdx.frontmatter.thumbnail.publicURL,
+          description: data.mdx.excerpt
+        },
+        {
+          '@context': 'http://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: data.site.siteMetadata.title,
+              item: data.site.siteMetadata.url
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: `${data.mdx.frontmatter.category} designs`,
+              item: `${
+                data.site.siteMetadata.url
+              }/${data.mdx.frontmatter.category.toLowerCase()}`
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: data.mdx.frontmatter.title
+            }
+          ]
+        }
+      ]}
+    >
       <article>
         <h1 className='relative text-center font-serif'>
-          {mdx.frontmatter.title}{' '}
+          {data.mdx.frontmatter.title}{' '}
           <sup className='relative lg:absolute lg:top-0 lg:ml-2 lg:mt-4 font-serif'>
-            ({mdx.frontmatter.date})
+            ({data.mdx.frontmatter.date})
           </sup>
         </h1>
 
         <div className='mt-4 lg:mt-8 lg:px-48'>
-          <MDXRenderer>{mdx.body}</MDXRenderer>
+          <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </div>
       </article>
     </Layout>
@@ -25,13 +64,23 @@ const Project = ({ data: { mdx } }) => {
 
 export const query = graphql`
   query QueryProject($id: String!) {
+    site {
+      siteMetadata {
+        title
+        url
+      }
+    }
     mdx(id: { eq: $id }) {
       frontmatter {
         title
         date(formatString: "YYYY")
         category
+        thumbnail {
+          publicURL
+        }
       }
       body
+      excerpt(pruneLength: 150, truncate: true)
     }
   }
 `

@@ -1,11 +1,39 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import Cards from '../components/cards'
 
-const Category = ({ pageContext }) => {
+const Category = ({ data, pageContext }) => {
   return (
-    <Layout category={pageContext.category}>
+    <Layout
+      category={pageContext.category}
+      title={pageContext.category !== '*' && `${pageContext.category} designs`}
+      description={`Zhiyuan's ${
+        pageContext.category === '*'
+          ? 'highlighted designs. Passionate and experienced product designer, based in Stockholm working for H&M Group.'
+          : `${pageContext.category.toLowerCase()} designs. Passionate and experienced product designer, based in Stockholm working for H&M Group.`
+      }`}
+      schema={
+        pageContext.category !== '*' && {
+          '@context': 'http://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: data.site.siteMetadata.title,
+              item: data.site.siteMetadata.url
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: `${pageContext.category} designs`
+            }
+          ]
+        }
+      }
+    >
       <h2 className='text-center lg:text-4xl my-8 lg:mt-0 lg:mb-20 lg:px-64'>
         Passionate and experienced product designer, based in{' '}
         <a
@@ -29,5 +57,16 @@ const Category = ({ pageContext }) => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query QueryCategory {
+    site {
+      siteMetadata {
+        title
+        url
+      }
+    }
+  }
+`
 
 export default Category

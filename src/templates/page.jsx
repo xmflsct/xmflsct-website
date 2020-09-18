@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 
 const Page = ({ data: { mdx } }) => {
   return (
-    <Layout>
+    <Layout title={mdx.frontmatter.title} description={mdx.excerpt}>
       <article>
         <h1 className='text-center font-serif'>{mdx.frontmatter.title}</h1>
 
@@ -25,6 +25,7 @@ export const pageQuery = graphql`
         title
       }
       body
+      excerpt(pruneLength: 150, truncate: true)
     }
   }
 `
