@@ -31,19 +31,6 @@ const Header = ({ category }) => {
           fieldValue
         }
       }
-      allPages: allMdx(
-        sort: { fields: [frontmatter___page_order], order: ASC }
-        filter: { fileAbsolutePath: { regex: "/pages/" } }
-      ) {
-        edges {
-          node {
-            slug
-            frontmatter {
-              name
-            }
-          }
-        }
-      }
     }
   `)
   return (
@@ -183,12 +170,13 @@ const Header = ({ category }) => {
       >
         <button
           className='mx-auto lg:ml-auto lg:mr-0 h-8 flex items-center'
+          aria-label={darkMode.value ? 'Light mode' : 'Dark mode'}
           onClick={darkMode.toggle}
         >
-          {!darkMode.value ? (
-            <Moon size='1.25em' fill='currentColor' />
-          ) : (
+          {darkMode.value ? (
             <Sun size='1.25em' />
+          ) : (
+            <Moon size='1.25em' fill='currentColor' />
           )}
         </button>
       </div>
