@@ -17,7 +17,7 @@ const Project = ({ data }) => {
           headline: data.mdx.frontmatter.title,
           ...(data.mdx.frontmatter.thumbnail && {
             image:
-              data.site.siteMetadata.url +
+              data.site.siteMetadata.siteUrl +
               data.mdx.frontmatter.thumbnail.publicURL
           }),
           description: data.mdx.excerpt
@@ -30,14 +30,14 @@ const Project = ({ data }) => {
               '@type': 'ListItem',
               position: 1,
               name: data.site.siteMetadata.title,
-              item: data.site.siteMetadata.url
+              item: data.site.siteMetadata.siteUrl
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: `${data.mdx.frontmatter.category} designs`,
               item: `${
-                data.site.siteMetadata.url
+                data.site.siteMetadata.siteUrl
               }/${data.mdx.frontmatter.category.toLowerCase()}`
             },
             {
@@ -70,7 +70,7 @@ export const query = graphql`
     site {
       siteMetadata {
         title
-        url
+        siteUrl
       }
     }
     mdx(id: { eq: $id }) {

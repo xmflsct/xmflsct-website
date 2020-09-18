@@ -3,23 +3,24 @@ module.exports = {
     title: "Zhiyuan' Portfolio",
     description:
       'A passionate and experienced product designer with a cross-cultural background of China 🇨🇳, the Netherlands 🇳🇱 and Sweden 🇸🇪. Constantly reaching out to experience cultural differences, and further reflecting upon the perception between human, human and machine.',
-    url: 'https://xmflsct.com'
+    siteUrl: 'https://xmflsct.com'
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: `UA-49185184-1`,
-        head: `true`
+        trackingId: 'UA-49185184-1',
+        head: 'true'
       }
     },
     {
-      resolve: `gatsby-plugin-layout`,
+      resolve: 'gatsby-plugin-layout',
       options: {
-        component: require.resolve(`./src/components/layouts.jsx`)
+        component: require.resolve('./src/components/layouts.jsx')
       }
     },
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-react-axe',
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-sass',
       options: {
@@ -29,8 +30,8 @@ module.exports = {
         ]
       }
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-sitemap`,
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-use-dark-mode',
       options: {
@@ -49,32 +50,32 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/content/pages`,
-        name: `pages`
+        name: 'pages'
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/content/projects`,
-        name: `projects`
+        name: 'projects'
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/content/assets`,
-        name: `assets`
+        name: 'assets'
       }
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: 'gatsby-plugin-mdx',
       options: {
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1080,
               linkImagesToOriginal: false,
@@ -90,11 +91,11 @@ module.exports = {
               rel: 'noopener noreferrer'
             }
           },
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-smartypants'
         ]
       }
     },
-    `gatsby-transformer-sharp`
+    'gatsby-transformer-sharp'
   ]
 }

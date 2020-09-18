@@ -23,7 +23,7 @@ const Category = ({ data, pageContext }) => {
               '@type': 'ListItem',
               position: 1,
               name: data.site.siteMetadata.title,
-              item: data.site.siteMetadata.url
+              item: data.site.siteMetadata.siteUrl
             },
             {
               '@type': 'ListItem',
@@ -34,7 +34,7 @@ const Category = ({ data, pageContext }) => {
         }
       }
     >
-      <h2 className='text-center lg:text-4xl my-8 lg:mt-0 lg:mb-20 lg:px-64'>
+      <h1 className='text-center text-xl lg:text-4xl my-8 lg:mt-0 lg:mb-20 lg:px-64'>
         Passionate and experienced product designer, based in{' '}
         <a
           href='https://visitsweden.com/stockholm/'
@@ -51,7 +51,7 @@ const Category = ({ data, pageContext }) => {
         >
           H&amp;M Group
         </a>
-      </h2>
+      </h1>
 
       <Cards filter={pageContext.category} />
     </Layout>
@@ -63,7 +63,7 @@ export const query = graphql`
     site {
       siteMetadata {
         title
-        url
+        siteUrl
       }
     }
   }

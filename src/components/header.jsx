@@ -106,7 +106,7 @@ const Header = ({ category }) => {
               }}
               className={`pl-3 lg:pr-4 relative z-50 focus:outline-none ${
                 toggleMenu ? 'opacity-100' : ''
-              } ${category !== '*' && 'opacity-100'}`}
+              } ${category !== '*' ? 'opacity-100' : ''}`}
             >
               designs {category === '*' ? 'below' : category.toLowerCase()}
               <motion.span
@@ -148,7 +148,7 @@ const Header = ({ category }) => {
                     <Link
                       to={`/${fieldValue.toLowerCase()}`}
                       activeClassName='active'
-                      className={category === fieldValue && 'active'}
+                      className={category === fieldValue ? 'active' : ''}
                     >
                       <span className='hidden lg:inline-block opacity-0'>
                         designs
