@@ -15,9 +15,9 @@ const Layout = ({ category, children, description, schema, title }) => {
         className='max-w-screen-xl mx-auto px-4 mt-4 lg:mt-12'
         key={Math.random()}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: 0.35 } }}
+        animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.25 }}
+        transition={{ duration: 0.35 }}
       >
         <MDXProvider
           components={{
