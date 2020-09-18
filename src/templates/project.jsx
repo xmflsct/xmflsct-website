@@ -15,8 +15,11 @@ const Project = ({ data }) => {
           '@context': 'http://schema.org',
           '@type': 'Article',
           headline: data.mdx.frontmatter.title,
-          image:
-            data.site.siteMetadata.url + data.mdx.frontmatter.thumbnail.publicURL,
+          ...(data.mdx.frontmatter.thumbnail && {
+            image:
+              data.site.siteMetadata.url +
+              data.mdx.frontmatter.thumbnail.publicURL
+          }),
           description: data.mdx.excerpt
         },
         {
