@@ -1,7 +1,7 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import { Link } from "gatsby";
-import Img from "gatsby-image";
+import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import { Link } from 'gatsby'
+import Img from 'gatsby-image'
 
 const Cards = ({ filter }) => {
   const data = useStaticQuery(graphql`
@@ -12,15 +12,16 @@ const Cards = ({ filter }) => {
       ) {
         edges {
           node {
-            fields {
-              slug
-            }
+            slug
             frontmatter {
               title
               category
               thumbnail {
                 childImageSharp {
-                  fluid(maxWidth: 1280) {
+                  half: fluid(maxWidth: 624, quality: 90) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                  full: fluid(maxWidth: 1248, quality: 90) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
@@ -30,65 +31,78 @@ const Cards = ({ filter }) => {
         }
       }
     }
-  `);
+  `)
   return (
-    <div className="cards-feed">
+    <div className='flex flex-wrap'>
       {data.allProjects.edges
-        .filter(function(node) {
-          if (filter === "*") {
-            return true;
+        .filter(function (node) {
+          if (filter === '*') {
+            return true
           } else {
-            return node.node.frontmatter.category === filter;
+            return node.node.frontmatter.category === filter
           }
         })
         .map(({ node }, index) => {
           if (node.frontmatter.thumbnail) {
             return (
               <article
-                className={`project-card with-image ${(index + 1) % 3 === 0 &&
-                  `project-card-large`}`}
                 key={index}
+                className={`relative h-48 md:h-card ${
+                  (index + 1) % 3 === 0
+                    ? 'flex-single'
+                    : 'flex-single md:flex-double'
+                }`}
               >
                 <Img
-                  css={{ top: 0, left: 0, right: 0, bottom: 0 }}
-                  style={{
-                    position: `absolute`,
-                    width: `100%`,
-                    height: `100%`
-                  }}
-                  fluid={node.frontmatter.thumbnail.childImageSharp.fluid}
+                  className='absolute inset-0 w-full h-full'
+                  fluid={
+                    (index + 1) % 3 === 0
+                      ? node.frontmatter.thumbnail.childImageSharp.full
+                      : node.frontmatter.thumbnail.childImageSharp.half
+                  }
                 />
-                <Link to={node.fields.slug} className="project-card-link">
-                  <div className="project-card-content">
-                    <h6 className="project-card-category">{node.frontmatter.category}</h6>
-                    <h2 className="project-card-title">
-                      {node.frontmatter.title || node.fields.slug}<br />
-                    </h2>
-                  </div>
+                <Link
+                  to={node.slug}
+                  className='absolute inset-0 w-full h-full flex justify-center items-center border-0 bg-white bg-opacity-75 transition duration-300 ease-in-out opacity:100 lg:opacity-0 hover:opacity-100'
+                >
+                  <h2 className='text-center text-lg lg:text-2xl align-middle inline-block text-light'>
+                    {node.frontmatter.title || node.slug}
+                    <br />
+                  </h2>
+                  <h3 className='absolute left-0 top-0 border border-light px-2 py-1 m-3 text-sm lg:text-base text-light'>
+                    {node.frontmatter.category}
+                  </h3>
                 </Link>
               </article>
-            );
+            )
           } else {
             return (
               <article
-                className={`project-card no-image ${(index + 1) % 3 === 0 &&
-                  `project-card-large`}`}
                 key={index}
+                className={`relative h-48 md:h-card ${
+                  (index + 1) % 3 === 0
+                    ? 'flex-single'
+                    : 'flex-single md:flex-double'
+                }`}
               >
-                <Link to={node.fields.slug} className="project-card-link">
-                  <div className="project-card-content">
-                  <h6 className="project-card-category">{node.frontmatter.category}</h6>
-                    <h2 className="project-card-title">
-                      {node.frontmatter.title || node.fields.slug}
-                    </h2>
-                  </div>
+                <Link
+                  to={node.slug}
+                  className='absolute inset-0 w-full h-full flex justify-center items-center border-0 bg-gradient-to-r from-white to-light-bg'
+                >
+                  <h2 className='text-center text-lg lg:text-2xl align-middle inline-block text-light'>
+                    {node.frontmatter.title || node.slug}
+                    <br />
+                  </h2>
+                  <h3 className='absolute left-0 top-0 border border-light px-2 py-1 m-3 text-sm lg:text-base text-light'>
+                    {node.frontmatter.category}
+                  </h3>
                 </Link>
               </article>
-            );
+            )
           }
         })}
     </div>
-  );
-};
+  )
+}
 
-export default Cards;
+export default Cards

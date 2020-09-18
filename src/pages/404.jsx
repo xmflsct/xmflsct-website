@@ -1,33 +1,26 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from '../components/layout'
 
-class NotFoundPage extends React.Component {
-  render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="404: Not Found" />
-        <article className={"post-content"}>
-          <header className="post-header">
-            <h2 className="post-title">404: not found what you need</h2>
-          </header>
+const NotFoundPage = ({ data }) => {
+  return (
+    <Layout title='404'>
+      <article>
+        <h1 className='relative text-center font-serif'>
+          404: not found what you need
+        </h1>
+        <div className='mt-4 lg:mt-8 lg:px-48'>
           <Img
             fluid={data.image.childImageSharp.fluid}
-            className="width-wide"
+            className='width-wide'
           />
-        </article>
-      </Layout>
-    )
-  }
+        </div>
+      </article>
+    </Layout>
+  )
 }
-
-export default NotFoundPage
 
 export const pageQuery = graphql`
   query {
@@ -36,14 +29,14 @@ export const pageQuery = graphql`
         title
       }
     }
-    image: file (
-      relativePath: { eq: "404.jpg" }
-    ) {
+    image: file(relativePath: { eq: "404.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1280) {
+        fluid(maxWidth: 864) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
   }
 `
+
+export default NotFoundPage

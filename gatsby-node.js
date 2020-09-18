@@ -1,115 +1,82 @@
-const path = require(`path`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const path = require(`path`)
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
+  const templatePage = path.resolve(`./src/templates/page.jsx`)
+  const templateProject = path.resolve(`./src/templates/project.jsx`)
+  const templateCategory = path.resolve(`./src/templates/category.jsx`)
 
-  const templatePage = path.resolve(`./src/templates/page.jsx`);
-  const templateProject = path.resolve(`./src/templates/project.jsx`);
-  const templateCategory = path.resolve(`./src/templates/category.jsx`);
-
-  return graphql(
-    `
-      {
-        allPages: allMdx(filter: { fileAbsolutePath: { regex: "/pages/" } }) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              id
-            }
-          }
-        }
-        allProjects: allMdx(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fileAbsolutePath: { regex: "/projects/" } }
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              id
-            }
-          }
-        }
-        allCategories: allMdx(
-          filter: { fileAbsolutePath: { regex: "/(projects)/" } }
-        ) {
-          group(field: frontmatter___category) {
-            fieldValue
-          }
+  const query = await graphql(`
+    {
+      allPages: allMdx(filter: { fileAbsolutePath: { regex: "/pages/" } }) {
+        nodes {
+          id
+          slug
         }
       }
-    `
-  ).then(result => {
-    if (result.errors) {
-      throw result.errors;
+      allProjects: allMdx(
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: { fileAbsolutePath: { regex: "/projects/" } }
+      ) {
+        nodes {
+          id
+          slug
+        }
+      }
+      allCategories: allMdx(
+        filter: { fileAbsolutePath: { regex: "/projects/" } }
+      ) {
+        group(field: frontmatter___category) {
+          fieldValue
+        }
+      }
     }
-
-    const pages = result.data.allPages.edges;
-    const projects = result.data.allProjects.edges;
-    const categories = result.data.allCategories.group;
-
-    pages.forEach(page => {
+  `)
+  await Promise.all(
+    query.data.allPages.nodes.map(async page => {
       createPage({
-        path: page.node.fields.slug,
+        path: page.slug,
         component: templatePage,
         context: {
-          id: page.node.id
+          id: page.id
         }
-      });
-    });
-
-    projects.forEach(project => {
+      })
+    })
+  )
+  await Promise.all(
+    query.data.allProjects.nodes.map(async project => {
       createPage({
-        path: project.node.fields.slug,
+        path: project.slug,
         component: templateProject,
         context: {
-          id: project.node.id
+          id: project.id
         }
-      });
-    });
-
-    createPage({
-      path: "/",
-      component: templateCategory,
-      context: {
-        category: "*"
-      }
-    });
-
-    categories.forEach(category => {
+      })
+    })
+  )
+  createPage({
+    path: '/',
+    component: templateCategory,
+    context: {
+      category: '*'
+    }
+  })
+  await Promise.all(
+    query.data.allCategories.group.map(async category => {
       createPage({
-        path: category.fieldValue.replace(/\s+/g, "-").toLowerCase(),
+        path: category.fieldValue.replace(/\s+/g, '-').toLowerCase(),
         component: templateCategory,
         context: {
           category: category.fieldValue
         }
-      });
-    });
-
-    return null;
-  });
-};
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
-  if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode });
-    createNodeField({
-      name: `slug`,
-      node,
-      value
-    });
-  }
-};
+      })
+    })
+  )
+}
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"]
+      modules: [path.resolve(__dirname, 'src'), 'node_modules']
     }
-  });
-};
+  })
+}
