@@ -6,6 +6,9 @@ import SEO from './seo'
 import Header from './header'
 import Footer from './footer'
 
+import EmbedImage from './mdx/embedImage'
+import EmbedVideo from './mdx/embedVideo'
+
 const Layout = ({ category, children, description, schema, title }) => {
   return (
     <div className='pb-4 lg:px-10 lg:pb-8'>
@@ -35,7 +38,9 @@ const Layout = ({ category, children, description, schema, title }) => {
                 {...props}
                 className='font-serif leading-relaxed mb-4 lg:text-xl'
               />
-            )
+            ),
+            EmbedImage,
+            EmbedVideo
           }}
         >
           {children}
