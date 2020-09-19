@@ -60,6 +60,7 @@ const Cards = ({ filter }) => {
                       ? node.frontmatter.thumbnail.childImageSharp.full
                       : node.frontmatter.thumbnail.childImageSharp.half
                   }
+                  loading={index < 5 ? 'eager' : 'lazy'}
                 />
                 <Link
                   to={'/' + node.slug}
