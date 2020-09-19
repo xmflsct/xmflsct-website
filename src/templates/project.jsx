@@ -4,23 +4,23 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Layout from '../components/layout'
 
-const Project = ({ data }) => {
+const Case = ({ data: { mdx, site } }) => {
   return (
     <Layout
-      category={data.mdx.frontmatter.category}
-      title={data.mdx.frontmatter.title}
-      description={data.mdx.excerpt}
+      category={mdx.frontmatter.category}
+      title={mdx.frontmatter.title}
+      description={mdx.excerpt}
       schema={[
         {
           '@context': 'http://schema.org',
           '@type': 'Article',
-          headline: data.mdx.frontmatter.title,
-          ...(data.mdx.frontmatter.thumbnail && {
+          headline: mdx.frontmatter.title,
+          ...(mdx.frontmatter.thumbnail && {
             image:
-              data.site.siteMetadata.siteUrl +
-              data.mdx.frontmatter.thumbnail.publicURL
+              site.siteMetadata.siteUrl +
+              mdx.frontmatter.thumbnail.publicURL
           }),
-          description: data.mdx.excerpt
+          description: mdx.excerpt
         },
         {
           '@context': 'http://schema.org',
@@ -29,21 +29,21 @@ const Project = ({ data }) => {
             {
               '@type': 'ListItem',
               position: 1,
-              name: data.site.siteMetadata.title,
-              item: data.site.siteMetadata.siteUrl
+              name: site.siteMetadata.title,
+              item: site.siteMetadata.siteUrl
             },
             {
               '@type': 'ListItem',
               position: 2,
-              name: `${data.mdx.frontmatter.category} designs`,
+              name: `${mdx.frontmatter.category} designs`,
               item: `${
-                data.site.siteMetadata.siteUrl
-              }/${data.mdx.frontmatter.category.toLowerCase()}`
+                site.siteMetadata.siteUrl
+              }/${mdx.frontmatter.category.toLowerCase()}`
             },
             {
               '@type': 'ListItem',
               position: 3,
-              name: data.mdx.frontmatter.title
+              name: mdx.frontmatter.title
             }
           ]
         }
@@ -51,14 +51,14 @@ const Project = ({ data }) => {
     >
       <article>
         <h1 className='relative text-center font-serif'>
-          {data.mdx.frontmatter.title}{' '}
+          {mdx.frontmatter.title}{' '}
           <sup className='relative lg:absolute lg:top-0 lg:ml-2 lg:mt-4 font-serif'>
-            ({data.mdx.frontmatter.date})
+            ({mdx.frontmatter.date})
           </sup>
         </h1>
 
         <div className='mt-4 lg:mt-8 lg:px-48'>
-          <MDXRenderer>{data.mdx.body}</MDXRenderer>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
         </div>
       </article>
     </Layout>
@@ -66,7 +66,7 @@ const Project = ({ data }) => {
 }
 
 export const query = graphql`
-  query QueryProject($id: String!) {
+  query QueryCase($id: String!) {
     site {
       siteMetadata {
         title
@@ -88,4 +88,4 @@ export const query = graphql`
   }
 `
 
-export default Project
+export default Case
