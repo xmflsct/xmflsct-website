@@ -66,7 +66,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/content/assets`,
+        path: `${__dirname}/src/assets`,
         name: 'assets'
       }
     },
@@ -80,8 +80,9 @@ module.exports = {
               maxWidth: 1080,
               linkImagesToOriginal: false,
               quality: 100,
-              withWebp: true,
-              backgroundColor: 'none'
+              withWebp: { quality: 100 },
+              backgroundColor: 'none',
+              disableBgImage: true
             }
           },
           {
