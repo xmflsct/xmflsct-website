@@ -5,7 +5,7 @@ import useDarkMode from 'use-dark-mode'
 const Layout = ({ children }) => {
   useDarkMode()
 
-  return <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
+  return <AnimatePresence>{children}</AnimatePresence>
 }
 
 export default Layout
