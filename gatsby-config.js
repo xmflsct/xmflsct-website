@@ -34,7 +34,6 @@ module.exports = {
         ]
       }
     },
-    'gatsby-plugin-react-axe',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-sass',
