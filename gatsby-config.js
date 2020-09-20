@@ -19,6 +19,21 @@ module.exports = {
         component: require.resolve('./src/components/layouts.jsx')
       }
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Source Sans Pro`,
+            variants: [`400`, `600`]
+          },
+          {
+            family: `Source Serif Pro`,
+            variants: [`400`, `600`]
+          }
+        ]
+      }
+    },
     'gatsby-plugin-react-axe',
     'gatsby-plugin-react-helmet',
     {
@@ -36,17 +51,6 @@ module.exports = {
       resolve: 'gatsby-plugin-use-dark-mode',
       options: {
         minify: true
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        google: {
-          families: [
-            'Source Sans Pro:200,400,600',
-            'Source Serif Pro:200,400,600'
-          ]
-        }
       }
     },
     {
