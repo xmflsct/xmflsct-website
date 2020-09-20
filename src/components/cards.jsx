@@ -18,10 +18,10 @@ const Cards = ({ filter }) => {
               category
               thumbnail {
                 childImageSharp {
-                  half: fluid(maxWidth: 624, quality: 90) {
+                  half: fluid(maxWidth: 624, quality: 85) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
-                  full: fluid(maxWidth: 1248, quality: 90) {
+                  full: fluid(maxWidth: 1248, quality: 85) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
