@@ -36,6 +36,14 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /svg/
+        }
+      }
+    },
+    {
       resolve: 'gatsby-plugin-sass',
       options: {
         postCssPlugins: [
