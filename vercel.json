@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/.well-known/host-meta",
+      "destination": "https://social.xmflsct.com/.well-known/host-meta",
+      "statusCode": 301
+    }
+  ]
+}
