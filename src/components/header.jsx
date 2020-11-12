@@ -35,7 +35,7 @@ const Header = ({ category }) => {
   `)
   return (
     <motion.header
-      className={`overflow-hidden lg:h-auo lg:overflow-visible justify-start sticky top-0 flex flex-col lg:flex-row z-50 pt-4 pb-2 lg:pt-8 lg:pb-2`}
+      className={`overflow-hidden xl:h-auo xl:overflow-visible justify-start sticky top-0 flex flex-col xl:flex-row z-50 pt-4 pb-2 xl:pt-8 xl:pb-2`}
       animate={
         isSmallScreen
           ? toggleMenu
@@ -48,9 +48,9 @@ const Header = ({ category }) => {
       <div
         className={`${
           toggleMenu ? 'visible z-50' : 'hidden'
-        } order-3 lg:order-1 lg:block lg:flex-1 lg:text-sm my-4 lg:my-auto`}
+        } order-3 xl:order-1 xl:block xl:flex-1 xl:text-sm my-4 xl:my-auto`}
       >
-        <div className='flex justify-center lg:justify-start'>
+        <div className='flex justify-center xl:justify-start'>
           <a
             className='h-8 mr-8 flex items-center'
             href='https://www.instagram.com/xmflsct/'
@@ -81,16 +81,16 @@ const Header = ({ category }) => {
         </div>
       </div>
 
-      <div className='lg:flex-1 order-1 lg:order-2 flex justify-center'>
+      <div className='xl:flex-1 order-1 xl:order-2 flex justify-center'>
         {pathname.startsWith('/about-zhiyuan') ? (
-          <div className='lg:flex-1 text-right leading-9 pr-3'>
+          <div className='xl:flex-1 text-right leading-9 pr-3'>
             <ArrowDown size='1em' className='inline' /> About
           </div>
         ) : (
           <Link
             to={`/about-zhiyuan`}
             activeClassName='active'
-            className='lg:flex-1 text-right leading-9 pr-3'
+            className='xl:flex-1 text-right leading-9 pr-3'
           >
             <ArrowLeft size='1em' className='inline' /> About
           </Link>
@@ -98,13 +98,13 @@ const Header = ({ category }) => {
         <Link to={`/`} className='opacity-100 text-2xl font-semibold'>
           ZHIYUAN
         </Link>
-        <div className='relative lg:flex-1 block text-left leading-9'>
+        <div className='relative xl:flex-1 block text-left leading-9'>
           {category ? (
             <button
               onClick={() => {
                 setToggleMenu(!toggleMenu)
               }}
-              className={`pl-3 lg:pr-4 relative z-50 focus:outline-none ${
+              className={`pl-3 xl:pr-4 relative z-50 focus:outline-none ${
                 toggleMenu ? 'opacity-100' : ''
               } ${category !== '*' ? 'opacity-100' : ''}`}
             >
@@ -112,7 +112,7 @@ const Header = ({ category }) => {
               <motion.span
                 animate={{ rotate: toggleMenu ? -180 : 0 }}
                 transition={{ ease: 'easeInOut' }}
-                className='inline-block'
+                className='inline-block  ml-1'
               >
                 <ChevronDown size='1em' className='inline' />
               </motion.span>
@@ -135,8 +135,8 @@ const Header = ({ category }) => {
           <AnimatePresence initial={false}>
             {toggleMenu && (
               <motion.ul
-                className={`relative lg:absolute w-full lg:w-auto pl-3 pr-4 pb-1 ${
-                  darkMode.value ? 'lg:bg-dark-bg' : 'lg:bg-light-bg'
+                className={`relative xl:absolute w-full xl:w-auto pl-3 pr-4 pb-1 ${
+                  darkMode.value ? 'xl:bg-dark-bg' : 'xl:bg-light-bg'
                 }`}
                 initial={{ opacity: 0, y: '-2em' }}
                 animate={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ const Header = ({ category }) => {
                       activeClassName='active'
                       className={category === fieldValue ? 'active' : ''}
                     >
-                      <span className='hidden lg:inline-block opacity-0'>
+                      <span className='hidden xl:inline-block opacity-0'>
                         designs
                       </span>{' '}
                       {fieldValue.toLowerCase()}
@@ -166,10 +166,10 @@ const Header = ({ category }) => {
       <div
         className={`${
           toggleMenu ? 'visible z-50' : 'hidden'
-        } order-2 lg:block lg:flex-1 flex my-4 lg:my-auto`}
+        } order-2 xl:block xl:flex-1 flex my-4 xl:my-auto`}
       >
         <button
-          className='mx-auto lg:ml-auto lg:mr-0 h-8 flex items-center'
+          className='mx-auto xl:ml-auto xl:mr-0 h-8 flex items-center'
           aria-label={darkMode.value ? 'Light mode' : 'Dark mode'}
           onClick={darkMode.toggle}
         >
