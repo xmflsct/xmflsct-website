@@ -24,13 +24,10 @@ const Layout = ({ category, children, description, schema, title }) => {
       >
         <MDXProvider
           components={{
-            h2: props => <h2 {...props} className='font-serif' />,
-            h3: props => <h3 {...props} className='font-serif' />,
-            h4: props => <h4 {...props} className='font-serif' />,
             blockquote: props => (
               <blockquote
                 {...props}
-                className='border-l-4 border-highlight pl-4'
+                className='border-l-4 border-highlight pl-4 lg:pl-6'
               />
             ),
             p: props => (
@@ -39,6 +36,31 @@ const Layout = ({ category, children, description, schema, title }) => {
                 className='font-serif leading-relaxed mb-4 lg:text-xl'
               />
             ),
+            ol: ({ children }) => {
+              return (
+                <ol className='font-serif -mt-2 mb-4 lg:mb-8 lg:text-xl'>
+                  {children.map(child => (
+                    <li
+                      {...child.props}
+                      className='list-decimal mb-2 ml-8 lg:ml-10'
+                    />
+                  ))}
+                </ol>
+              )
+            },
+            ul: ({ children }) => {
+              return (
+                <ol className='font-serif -mt-2 mb-4 lg:mb-8 lg:text-xl'>
+                  {children.map(child => (
+                    <li
+                      {...child.props}
+                      className='list-disc mb-2 ml-8 lg:ml-10'
+                    />
+                  ))}
+                </ol>
+              )
+            },
+            hr: props => <hr {...props} className='my-4 lg:my-6' />,
             EmbedImage,
             EmbedVideo
           }}
