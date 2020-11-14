@@ -24,6 +24,8 @@ const Layout = ({ category, children, description, schema, title }) => {
       >
         <MDXProvider
           components={{
+            h2: props => <h2 {...props} className='my-4' />,
+            h3: props => <h3 {...props} className='my-4' />,
             blockquote: props => (
               <blockquote
                 {...props}
@@ -33,7 +35,7 @@ const Layout = ({ category, children, description, schema, title }) => {
             p: props => (
               <p
                 {...props}
-                className='font-serif leading-relaxed mb-4 lg:text-xl'
+                className='font-serif leading-relaxed mb-4 lg:mb-8 lg:text-xl'
               />
             ),
             ol: ({ children }) => {

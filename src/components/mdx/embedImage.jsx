@@ -9,7 +9,7 @@ const EmbedImage = ({ children, classes, credit, width, website }) => {
 
   return (
     <div
-      className={`${classes} image-fix mb-4 ${width &&
+      className={`${classes} image-fix mb-4 lg:mb-8 ${width &&
         `lg:w-wide lg:ml-wideMargin`}`}
     >
       {website && (darkMode.value ? <BrowserDark /> : <BrowserLight />)}

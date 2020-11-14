@@ -64,7 +64,7 @@ const Cards = ({ filter }) => {
                 />
                 <Link
                   to={'/' + node.slug}
-                  className='absolute inset-0 w-full h-full flex justify-center items-center border-0 bg-white bg-opacity-75 transition duration-500 ease-in-out opacity:100 lg:opacity-100 hover:opacity-0'
+                  className='absolute inset-0 w-full h-full flex justify-center items-center border-0 bg-white bg-opacity-75 transition duration-500 ease-in-out opacity:100 lg:opacity-0 hover:opacity-100'
                 >
                   <h2 className='text-center text-lg lg:text-2xl align-middle inline-block text-light'>
                     {node.frontmatter.title}
