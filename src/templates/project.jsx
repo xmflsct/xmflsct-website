@@ -17,8 +17,7 @@ const Case = ({ data: { mdx, site } }) => {
           headline: mdx.frontmatter.title,
           ...(mdx.frontmatter.thumbnail && {
             image:
-              site.siteMetadata.siteUrl +
-              mdx.frontmatter.thumbnail.publicURL
+              site.siteMetadata.siteUrl + mdx.frontmatter.thumbnail.publicURL
           }),
           description: mdx.excerpt
         },
@@ -32,7 +31,7 @@ const Case = ({ data: { mdx, site } }) => {
               name: site.siteMetadata.title,
               item: site.siteMetadata.siteUrl
             },
-            {
+            mdx.frontmatter.category && {
               '@type': 'ListItem',
               position: 2,
               name: `${mdx.frontmatter.category} designs`,
@@ -49,15 +48,15 @@ const Case = ({ data: { mdx, site } }) => {
         }
       ]}
     >
-      <article>
-        <h1 className='relative text-center font-serif'>
+      <article className='mt-4 lg:mt-8 lg:px-48'>
+        <h1 className='relative text-center font-serif mb-4 lg:mb-8'>
           {mdx.frontmatter.title}{' '}
           <sup className='relative lg:absolute lg:top-0 lg:ml-2 lg:mt-4 font-serif'>
             ({mdx.frontmatter.date})
           </sup>
         </h1>
 
-        <div className='mt-4 lg:mt-8 lg:px-48'>
+        <div>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </div>
       </article>

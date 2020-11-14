@@ -37,7 +37,7 @@ const Cards = ({ filter }) => {
       {data.allProjects.edges
         .filter(function (node) {
           if (filter === '*') {
-            return true
+            return node.node.frontmatter.category !== null
           } else {
             return node.node.frontmatter.category === filter
           }
