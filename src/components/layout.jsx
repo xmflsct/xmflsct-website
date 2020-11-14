@@ -1,4 +1,5 @@
 import React from 'react'
+import { ExternalLink } from 'react-feather'
 import { motion } from 'framer-motion'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -24,6 +25,19 @@ const Layout = ({ category, children, description, schema, title }) => {
       >
         <MDXProvider
           components={{
+            a: props => {
+              return (
+                <a href={props.href} rel={props.rel} target={props.target}>
+                  {props.children}
+                  {props.href.includes('xmflsct.com') ||
+                  props.href.startsWith('/') ? (
+                    ''
+                  ) : (
+                    <ExternalLink size='0.75em' className='inline mx-1' />
+                  )}
+                </a>
+              )
+            },
             h2: props => <h2 {...props} className='my-4' />,
             h3: props => <h3 {...props} className='my-4' />,
             blockquote: props => (
