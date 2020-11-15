@@ -16,7 +16,7 @@ const Footer = () => {
     <footer className='mt-10 px-3 text-center'>
       &copy; {new Date().getFullYear()}{' '}
       <Link to={`/`}>{data.site.siteMetadata.title}</Link> &mdash; Built with{' '}
-      <a href='https://gatsbyjs.org' target='_blank' rel='noopener noreferrer'>
+      <a href='https://gatsbyjs.com' target='_blank' rel='noopener noreferrer'>
         Gatsby
       </a>
       , hosted on{' '}

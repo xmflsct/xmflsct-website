@@ -43,7 +43,7 @@ const Category = ({ data, pageContext }) => {
         >
           Stockholm
         </a>{' '}
-        working for{' '}
+        designing at{' '}
         <a
           href='https://hmgroup.com/'
           target='_blank'
