@@ -50,7 +50,12 @@ module.exports = {
       }
     },
     'gatsby-plugin-sharp',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/2020/scaling-customer-centricity']
+      }
+    },
     {
       resolve: 'gatsby-plugin-use-dark-mode',
       options: {

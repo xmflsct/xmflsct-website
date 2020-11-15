@@ -1,4 +1,5 @@
 import React from 'react'
+// import { ExternalLink } from 'react-feather'
 import { motion } from 'framer-motion'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -24,38 +25,83 @@ const Layout = ({ category, children, description, schema, title }) => {
       >
         <MDXProvider
           components={{
-            blockquote: props => (
-              <blockquote
-                {...props}
-                className='border-l-4 border-highlight pl-4 lg:pl-6'
-              />
-            ),
-            p: props => (
-              <p
-                {...props}
-                className='font-serif leading-relaxed mb-4 lg:text-xl'
-              />
-            ),
+            a: props => {
+              return (
+                <a href={props.href} rel={props.rel} target={props.target}>
+                  {props.children}
+                  {/* {props.href.includes('xmflsct.com') ||
+                  props.href.startsWith('/') ? (
+                    ''
+                  ) : (
+                    <ExternalLink size='0.75em' className='inline mx-1' />
+                  )} */}
+                </a>
+              )
+            },
+            h2: props => <h2 {...props} className='my-4' />,
+            h3: props => <h3 {...props} className='my-4' />,
+            blockquote: ({ children }) => {
+              if (!Array.isArray(children)) children = [children]
+              return (
+                <blockquote className='border-l-4 border-highlight pl-4 lg:pl-6'>
+                  {children.map((child, index) => {
+                    switch (child.props.originalType) {
+                      case 'h2':
+                        return (
+                          <h2 key={index} {...child.props} className='my-2' />
+                        )
+                      case 'h3':
+                        return (
+                          <h3 key={index} {...child.props} className='my-2' />
+                        )
+                      case 'p':
+                        return (
+                          <p
+                            key={index}
+                            {...child.props}
+                            className='font-serif leading-relaxed mb-2 lg:mb-4 lg:text-xl'
+                          />
+                        )
+                      default:
+                        return (
+                          <p
+                            key={index}
+                            {...child.props}
+                            className='font-serif leading-relaxed mb-2 lg:mb-4 lg:text-xl'
+                          />
+                        )
+                    }
+                  })}
+                </blockquote>
+              )
+            },
+            p: props => {
+              return (
+                <p
+                  {...props}
+                  className='font-serif leading-relaxed mb-4 lg:mb-8 lg:text-xl'
+                />
+              )
+            },
             ol: ({ children }) => {
               return (
                 <ol className='font-serif -mt-2 mb-4 lg:mb-8 lg:text-xl'>
-                  {children.map(child => (
-                    <li
-                      {...child.props}
-                      className='list-decimal mb-2 ml-8 lg:ml-10'
-                    />
+                  {children.map((child, index) => (
+                    <li key={index} className='list-decimal mb-2 ml-8 lg:ml-10'>
+                      {child.props.children}
+                    </li>
                   ))}
                 </ol>
               )
             },
             ul: ({ children }) => {
+              console.log(children)
               return (
                 <ol className='font-serif -mt-2 mb-4 lg:mb-8 lg:text-xl'>
-                  {children.map(child => (
-                    <li
-                      {...child.props}
-                      className='list-disc mb-2 ml-8 lg:ml-10'
-                    />
+                  {children.map((child, index) => (
+                    <li key={index} className='list-disc mb-2 ml-8 lg:ml-10'>
+                      {child.props.children}
+                    </li>
                   ))}
                 </ol>
               )

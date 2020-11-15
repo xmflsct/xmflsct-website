@@ -17,7 +17,7 @@ const EmbedVideo = ({ autoplay, credit, host, source, title, width }) => {
       break
   }
   return (
-    <div className={`mb-4 ${width && `lg:w-wide lg:ml-wideMargin`}`}>
+    <div className={`mb-4 lg:mb-8 ${width && `lg:w-wide lg:ml-wideMargin`}`}>
       <div className='relative w-full h-0 pb-16/9 overflow-hidden'>
         <iframe
           src={url}
