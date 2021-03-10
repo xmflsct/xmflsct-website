@@ -64,13 +64,13 @@ const Cards = ({ filter }) => {
                 />
                 <Link
                   to={'/' + node.slug}
-                  className='absolute inset-0 w-full h-full flex justify-center items-center border-0 bg-white bg-opacity-75 transition duration-500 ease-in-out opacity:100 lg:opacity-0 hover:opacity-100'
+                  className='absolute inset-0 w-full h-full flex justify-center items-center border-0 bg-background-light bg-opacity-75 transition duration-300 lg:opacity-0 hover:opacity-100'
                 >
-                  <h2 className='text-center text-lg lg:text-2xl align-middle inline-block text-light'>
+                  <h2 className='text-center text-lg lg:text-2xl align-middle inline-block text-content-light focus:text-content-light'>
                     {node.frontmatter.title}
                     <br />
                   </h2>
-                  <h3 className='absolute left-0 top-0 border border-light px-2 py-1 m-3 text-sm lg:text-base text-light'>
+                  <h3 className='absolute left-0 top-0 border border-content-light px-2 py-1 m-3 text-sm lg:text-base text-content-light'>
                     {node.frontmatter.category}
                   </h3>
                 </Link>
@@ -90,11 +90,11 @@ const Cards = ({ filter }) => {
                   to={'/' + node.slug}
                   className='absolute inset-0 w-full h-full flex justify-center items-center border-0 bg-gradient-to-r from-white to-light-bg'
                 >
-                  <h2 className='text-center text-lg lg:text-2xl align-middle inline-block text-light'>
+                  <h2 className='text-center text-lg lg:text-2xl align-middle inline-block text-content-light'>
                     {node.frontmatter.title}
                     <br />
                   </h2>
-                  <h3 className='absolute left-0 top-0 border border-light px-2 py-1 m-3 text-sm lg:text-base text-light'>
+                  <h3 className='absolute left-0 top-0 border border-content-light px-2 py-1 m-3 text-sm lg:text-base text-content-light'>
                     {node.frontmatter.category}
                   </h3>
                 </Link>

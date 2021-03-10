@@ -34,8 +34,8 @@ const Category = ({ data, pageContext }) => {
         }
       }
     >
-      <h1 className='text-center text-xl lg:text-4xl my-8 lg:mt-0 lg:mb-20 lg:px-64'>
-        Passionate and experienced product designer, based in{' '}
+      <h1 className='text-center text-xl leading-snug lg:text-4xl lg:leading-snug my-8 lg:mt-0 lg:mb-20 lg:px-32'>
+        Seasoned designer who also makes design work. Currently based in{' '}
         <a
           href='https://visitsweden.com/stockholm/'
           target='_blank'
@@ -43,14 +43,14 @@ const Category = ({ data, pageContext }) => {
         >
           Stockholm
         </a>{' '}
-        designing at{' '}
+        leading product design at{' '}
         <a
           href='https://hmgroup.com/'
           target='_blank'
           rel='noopener noreferrer'
         >
           H&amp;M Group
-        </a>
+        </a>.
       </h1>
 
       <Cards filter={pageContext.category} />
