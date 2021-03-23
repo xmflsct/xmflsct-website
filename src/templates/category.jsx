@@ -35,7 +35,7 @@ const Category = ({ data, pageContext }) => {
       }
     >
       <h1 className='text-center text-xl leading-snug lg:text-4xl lg:leading-snug my-8 lg:mt-0 lg:mb-20 lg:px-32'>
-        Seasoned designer who also makes design work. Currently based in{' '}
+        Experienced designer who enjoys making design work. Currently based in{' '}
         <a
           href='https://visitsweden.com/stockholm/'
           target='_blank'

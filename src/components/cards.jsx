@@ -60,7 +60,6 @@ const Cards = ({ filter }) => {
                       ? node.frontmatter.thumbnail.childImageSharp.full
                       : node.frontmatter.thumbnail.childImageSharp.half
                   }
-                  loading={index < 5 ? 'eager' : 'lazy'}
                 />
                 <Link
                   to={'/' + node.slug}
@@ -88,7 +87,7 @@ const Cards = ({ filter }) => {
               >
                 <Link
                   to={'/' + node.slug}
-                  className='absolute inset-0 w-full h-full flex justify-center items-center border-0 bg-gradient-to-r from-white to-light-bg'
+                  className='absolute inset-0 w-full h-full flex justify-center items-center border-0 bg-gradient-to-r from-white to-background-light'
                 >
                   <h2 className='text-center text-lg lg:text-2xl align-middle inline-block text-content-light'>
                     {node.frontmatter.title}
