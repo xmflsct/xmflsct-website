@@ -136,7 +136,9 @@ const Header = ({ category }) => {
             {toggleMenu && (
               <motion.ul
                 className={`relative xl:absolute w-full xl:w-auto pl-3 pr-4 pb-1 ${
-                  darkMode.value ? 'xl:bg-dark-bg' : 'xl:bg-light-bg'
+                  darkMode.value
+                    ? 'xl:bg-background-dark'
+                    : 'xl:bg-background-light'
                 }`}
                 initial={{ opacity: 0, y: '-2em' }}
                 animate={{ opacity: 1, y: 0 }}

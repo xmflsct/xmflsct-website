@@ -4,23 +4,23 @@
 
 @layer base {
   h1 {
-    @apply text-2xl;
+    @apply text-2xl leading-tight;
   }
   h2 {
-    @apply text-xl;
+    @apply text-xl leading-tight;
   }
   h3 {
-    @apply text-lg;
+    @apply text-lg leading-tight;
   }
   @screen lg {
     h1 {
-      @apply text-5xl;
+      @apply text-5xl leading-tight;
     }
     h2 {
-      @apply text-4xl;
+      @apply text-4xl leading-tight;
     }
     h3 {
-      @apply text-3xl;
+      @apply text-3xl leading-tight;
     }
   }
 
@@ -69,29 +69,29 @@
     }
 
     &.light-mode {
-      @apply text-light bg-light-bg;
+      @apply text-content-light bg-background-light;
 
       header {
-        @apply text-light bg-light-bg;
+        @apply text-content-light bg-background-light;
 
         a {
           &:hover,
           &.active {
-            @apply text-light;
+            @apply text-content-light;
           }
         }
       }
     }
     &.dark-mode {
-      @apply text-dark bg-dark-bg;
+      @apply text-content-dark bg-background-dark;
 
       header {
-        @apply text-dark bg-dark-bg;
+        @apply text-content-dark bg-background-dark;
 
         a {
           &:hover,
           &.active {
-            @apply text-dark;
+            @apply text-content-dark;
           }
         }
       }

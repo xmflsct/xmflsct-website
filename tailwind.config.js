@@ -7,14 +7,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        light: {
-          default: '#292929',
-          bg: '#f8f8f8'
-        },
-        dark: {
-          default: '#ececec',
-          bg: '#181818'
-        },
+        'content-light': '#292929',
+        'background-light': '#f8f8f8',
+        'content-dark': '#ececec',
+        'background-dark': '#181818',
         highlight: '#ffcd00'
       },
       flex: {

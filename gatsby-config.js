@@ -43,9 +43,9 @@ module.exports = {
     },
     {
       resolve: 'gatsby-plugin-use-dark-mode',
-      options: {
-        minify: true
-      }
+      // options: {
+      //   minify: true
+      // }
     },
     {
       resolve: `gatsby-plugin-webfonts`,
@@ -112,6 +112,7 @@ module.exports = {
         ]
       }
     },
+    'gatsby-plugin-postcss',
     'gatsby-transformer-sharp'
   ]
 }

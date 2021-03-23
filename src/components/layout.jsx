@@ -59,7 +59,7 @@ const Layout = ({ category, children, description, schema, title }) => {
                           <p
                             key={index}
                             {...child.props}
-                            className='font-serif leading-relaxed mb-2 lg:mb-4 lg:text-xl'
+                            className='font-serif mb-2 lg:mb-4 lg:text-xl lg:leading-relaxed'
                           />
                         )
                       default:
@@ -67,7 +67,7 @@ const Layout = ({ category, children, description, schema, title }) => {
                           <p
                             key={index}
                             {...child.props}
-                            className='font-serif leading-relaxed mb-2 lg:mb-4 lg:text-xl'
+                            className='font-serif mb-2 lg:mb-4 lg:text-xl lg:leading-relaxed'
                           />
                         )
                     }
@@ -79,7 +79,7 @@ const Layout = ({ category, children, description, schema, title }) => {
               return (
                 <p
                   {...props}
-                  className='font-serif leading-relaxed mb-4 lg:mb-8 lg:text-xl'
+                  className='font-serif mb-4 lg:mb-8 lg:text-xl lg:leading-relaxed'
                 />
               )
             },
@@ -95,7 +95,6 @@ const Layout = ({ category, children, description, schema, title }) => {
               )
             },
             ul: ({ children }) => {
-              console.log(children)
               return (
                 <ol className='font-serif -mt-2 mb-4 lg:mb-8 lg:text-xl'>
                   {children.map((child, index) => (
