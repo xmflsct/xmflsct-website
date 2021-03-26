@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Cards = ({ filter }) => {
   const data = useStaticQuery(graphql`
@@ -18,12 +18,18 @@ const Cards = ({ filter }) => {
               category
               thumbnail {
                 childImageSharp {
-                  half: fluid(maxWidth: 624, quality: 85) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                  full: fluid(maxWidth: 1248, quality: 85) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
+                  half: gatsbyImageData(
+                    width: 624
+                    quality: 85
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP]
+                  )
+                  full: gatsbyImageData(
+                    width: 1248
+                    quality: 85
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP]
+                  )
                 }
               }
             }
@@ -53,13 +59,13 @@ const Cards = ({ filter }) => {
                     : 'flex-single md:flex-double'
                 }`}
               >
-                <Img
-                  className='absolute inset-0 w-full h-full'
-                  fluid={
+                <GatsbyImage
+                  image={
                     (index + 1) % 3 === 0
                       ? node.frontmatter.thumbnail.childImageSharp.full
                       : node.frontmatter.thumbnail.childImageSharp.half
                   }
+                  alt={node.frontmatter.title}
                 />
                 <Link
                   to={'/' + node.slug}

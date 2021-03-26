@@ -42,7 +42,7 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-use-dark-mode',
+      resolve: 'gatsby-plugin-use-dark-mode'
       // options: {
       //   minify: true
       // }
@@ -85,6 +85,7 @@ module.exports = {
         name: 'assets'
       }
     },
+    'gatsby-plugin-image',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
