@@ -28,24 +28,12 @@ module.exports = {
         }
       }
     },
-    {
-      resolve: 'gatsby-plugin-sass',
-      options: {
-        postCssPlugins: [require('tailwindcss')('./tailwind.config.js')]
-      }
-    },
     'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-plugin-sitemap',
-      options: {
-        exclude: ['/2020/scaling-customer-centricity']
-      }
+      resolve: 'gatsby-plugin-sitemap'
     },
     {
       resolve: 'gatsby-plugin-use-dark-mode'
-      // options: {
-      //   minify: true
-      // }
     },
     {
       resolve: `gatsby-plugin-webfonts`,
