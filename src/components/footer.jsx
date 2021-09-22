@@ -20,8 +20,12 @@ const Footer = () => {
         Gatsby
       </a>
       , hosted on{' '}
-      <a href='https://vercel.com/' target='_blank' rel='noopener noreferrer'>
-        Vercel
+      <a
+        href='https://pages.cloudflare.com/'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        Cloudflare Pages
       </a>
       , source code at{' '}
       <a

@@ -11,8 +11,8 @@ const Category = ({ data, pageContext }) => {
       title={pageContext.category !== '*' && `${pageContext.category} designs`}
       description={`Zhiyuan's ${
         pageContext.category === '*'
-          ? 'highlighted designs. Passionate and experienced product designer, based in Stockholm working for H&M Group.'
-          : `${pageContext.category.toLowerCase()} designs. Passionate and experienced product designer, based in Stockholm working for H&M Group.`
+          ? 'highlighted designs. Passionate and experienced product designer, based in Rotterdam working towards a better internet at Cloudflare.'
+          : `${pageContext.category.toLowerCase()} designs. Passionate and experienced product designer, based in Rotterdam working towards a better internet at Cloudflare.`
       }`}
       schema={
         pageContext.category !== '*' && {
@@ -35,22 +35,23 @@ const Category = ({ data, pageContext }) => {
       }
     >
       <h1 className='text-center text-xl leading-snug lg:text-4xl lg:leading-snug my-8 lg:mt-0 lg:mb-20 lg:px-32'>
-        Experienced designer who enjoys making design work. Currently based in{' '}
+        Experienced designer who enjoys making things work. Based in{' '}
         <a
-          href='https://visitsweden.com/stockholm/'
+          href='https://en.rotterdam.info/'
           target='_blank'
           rel='noopener noreferrer'
         >
-          Stockholm
+          Rotterdam
         </a>{' '}
-        leading product design at{' '}
+        , working towards a better internet at{' '}
         <a
-          href='https://hmgroup.com/'
+          href='https://cloudflare.com/'
           target='_blank'
           rel='noopener noreferrer'
         >
-          H&amp;M Group
-        </a>.
+          Cloudflare
+        </a>
+        .
       </h1>
 
       <Cards filter={pageContext.category} />
