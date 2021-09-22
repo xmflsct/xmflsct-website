@@ -7,10 +7,16 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingId: 'UA-49185184-1',
-        head: 'true'
+        trackingIds: ['G-1P8JGKDMGB'],
+        gtagConfig: {
+          anonymize_ip: true
+        },
+        pluginConfig: {
+          head: true,
+          respectDNT: true
+        }
       }
     },
     {
