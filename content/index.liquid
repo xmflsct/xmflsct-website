@@ -1,0 +1,69 @@
+---
+index: true
+layout: base
+title: Zhiyuan designed
+description: Zhiyuan's selected designs. Passionate and experienced product designer, based in the Netherlands 🇳🇱, helping make a better Internet at Cloudflare.
+---
+
+<h1 class="font-sans font-normal text-lg lg:text-2xl" style="text-wrap: balance;"><a href="/about-zhiyuan" class="font-bold">Zhiyuan</a> - passionate and experienced product designer based in
+  <a href="https://www.holland.com/" target="_blank">the Netherlands</a>
+  , helping make a better Internet at
+  <a href="https://cloudflare.com/" target="_blank">Cloudflare</a>.</h1>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-y-8">
+  {% assign projects = collections.all | group_by_year %}
+  {%- for projects_in_year in projects -%}
+    <div>
+      <h2 class="font-sans font-semibold text-sm text-stone-400 m-0">{{ projects_in_year.year }}</h2>
+      {%- for project in projects_in_year.data -%}
+        {% render 'tile.liquid' url: project.url, project: project.data %}
+      {%- endfor -%}
+    </div>
+  {%- endfor -%}
+</div>
+
+<script>
+  function selectTags() {
+    function selected(element, tag) {
+      element.childNodes.forEach(function(node) {
+        if (node.nodeName === 'BUTTON') {
+          if (node.attributes.tag.value === tag) {
+            node.classList.remove('border-stone-600')
+            node.classList.remove('text-stone-600')
+            node.classList.add('border-highlight')
+            node.classList.add('bg-highlight')
+            node.classList.add('text-stone-100')
+          }
+        }
+      })
+    }
+    function unselected(element, tag) {
+      element.childNodes.forEach(function(node) {
+        if (node.nodeName === 'BUTTON') {
+          node.classList.add('border-stone-600')
+          node.classList.add('text-stone-600')
+          node.classList.remove('border-highlight')
+          node.classList.remove('bg-highlight')
+          node.classList.remove('text-stone-100')
+        }
+      })
+    }
+    document.querySelectorAll('[id=case-tile]').forEach(function(tile) {
+      const tag = window.location.hash.slice(1)
+      if (tag.length > 0) {
+        if (tile.attributes.tags.value.includes(tag)) {
+          tile.classList.remove('opacity-40')
+          selected(tile, tag)
+        } else {
+          tile.classList.add('opacity-40')
+          unselected(tile, tag)
+        }
+      } else {
+        tile.classList.remove('opacity-40')
+        unselected(tile, tag)
+      }
+    });
+  }
+  window.onload = () => selectTags()
+  window.onhashchange = () => selectTags()
+</script>

@@ -1,5 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.jsx'],
+  content: ['./eleventy.config.*', './_includes/**/*.liquid', './_layouts/**/*.liquid', './content/**/*.liquid', './content/**/*.md'],
   theme: {
     fontFamily: {
       sans: ['Source Sans Pro', 'sans-serif'],
@@ -7,26 +8,14 @@ module.exports = {
     },
     extend: {
       colors: {
-        'content-light': '#292929',
-        'background-light': '#f8f8f8',
-        'content-dark': '#ececec',
-        'background-dark': '#181818',
-        highlight: '#ffcd00'
-      },
-      flex: {
-        double: '1 1 50%',
-        single: '1 1 100%'
-      },
-      height: {
-        card: '22rem'
+        highlight: '#F36C21'
       },
       spacing: {
-        '16/9': '56.25%',
-        wide: '125%',
-        wideMargin: '-12.5%'
+        '16/9': '56.25%'
+      },
+      boxShadow: {
+        'image': '0 0 8px 0 rgba(0, 0, 0, 0.08)'
       }
     }
-  },
-  variants: {},
-  plugins: []
+  }
 }
