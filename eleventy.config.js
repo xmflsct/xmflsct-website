@@ -1,7 +1,7 @@
 const { groupBy } = require('lodash')
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy({ './about-zhiyuan/CV-Zhiyuan_Zheng.pdf': 'files' })
+  eleventyConfig.addPassthroughCopy('./content/about-zhiyuan/CV-Zhiyuan_Zheng.pdf')
 
   eleventyConfig.addPlugin(require('./eleventy.config.avatar.js'))
   eleventyConfig.addPlugin(require('./eleventy.config.images.js'))

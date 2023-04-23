@@ -21,4 +21,4 @@ Let's explore together! I will bring along my key competencies:
 - Design thinking
 - Product development
 
-Feel free to grab my [CV here](/files/CV-Zhiyuan_Zheng.pdf) and keep in touch!
+Feel free to grab my [CV here](./CV-Zhiyuan_Zheng.pdf) and keep in touch!

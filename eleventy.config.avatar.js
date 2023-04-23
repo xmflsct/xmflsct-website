@@ -9,13 +9,13 @@ async function imageShortcode(src) {
     urlPath: this.page.url
   })
 
-  return `<div class="w-40 bg-stone-200 rounded-full overflow-hidden my-4 lg:my-8">
+  return `<div class="w-40 bg-stone-200 rounded-full overflow-hidden my-4 lg:my-8"><a href="javascript:history.back()">
     ${Image.generateHTML(metadata, {
       alt: "Zhiyuan's avatar",
       loading: 'lazy',
       decoding: 'async'
     })}
-  </div>
+  </a></div>
   `
 }
 
