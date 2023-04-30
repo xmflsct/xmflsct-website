@@ -1,54 +1,22 @@
 {
-  "name": "xmflsct",
+  "name": "xmflsct-website",
   "private": true,
-  "description": "A personal portfolio website",
-  "version": "1.0.0",
-  "author": "Zhiyuan Zheng <me@xmflsct.com>",
-  "dependencies": {
-    "@mdx-js/mdx": "v1",
-    "@mdx-js/react": "v1",
-    "autoprefixer": "^10.4.7",
-    "framer-motion": "^6.3.3",
-    "gatsby": "^4.14.0",
-    "gatsby-plugin-google-gtag": "^4.14.0",
-    "gatsby-plugin-image": "^2.14.1",
-    "gatsby-plugin-layout": "^3.14.0",
-    "gatsby-plugin-mdx": "^3.14.0",
-    "gatsby-plugin-postcss": "^5.14.0",
-    "gatsby-plugin-react-helmet": "^5.14.0",
-    "gatsby-plugin-react-svg": "^3.1.0",
-    "gatsby-plugin-sharp": "^4.14.1",
-    "gatsby-plugin-sitemap": "^5.14.0",
-    "gatsby-plugin-use-dark-mode": "^1.5.0",
-    "gatsby-plugin-webfonts": "^2.2.2",
-    "gatsby-remark-copy-linked-files": "^5.14.0",
-    "gatsby-remark-external-links": "^0.0.4",
-    "gatsby-remark-images": "^6.14.0",
-    "gatsby-remark-smartypants": "^5.14.0",
-    "gatsby-source-filesystem": "^4.14.0",
-    "gatsby-transformer-sharp": "^4.14.0",
-    "postcss": "^8.4.13",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-feather": "^2.0.9",
-    "react-helmet": "^6.1.0",
-    "react-responsive": "^8.2.0",
-    "tailwindcss": "^3.0.24",
-    "use-dark-mode": "^2.3.1"
-  },
-  "homepage": "https://xmflsct.com",
-  "license": "UNLICENSED",
-  "main": "n/a",
-  "keywords": [
-    "xmflsct"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/xmflsct/xmflsct-website.git"
-  },
   "scripts": {
-    "build": "gatsby build",
-    "dev": "gatsby develop",
-    "clean": "gatsby clean"
+    "dev": "yarn dev:11ty & yarn dev:css",
+    "dev:11ty": "eleventy --serve",
+    "dev:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --watch --postcss",
+    "build": "yarn build:11ty && yarn build:css",
+    "build:11ty": "eleventy",
+    "build:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --postcss"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-img": "^3.1.0",
+    "autoprefixer": "^10.4.14",
+    "lodash": "^4.17.21",
+    "markdown-it": "^13.0.1",
+    "markdown-it-link-attributes": "^4.0.1",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2"
   }
 }
