@@ -1,13 +1,16 @@
 const { groupBy } = require('lodash')
+const markdownIt = require('markdown-it')
+const markdownItLinkAttributes = require('markdown-it-link-attributes')
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy('./content/favicon.ico')
   eleventyConfig.addPassthroughCopy('./content/about-zhiyuan/CV-Zhiyuan_Zheng.pdf')
 
   eleventyConfig.addPlugin(require('./eleventy.config.avatar.js'))
   eleventyConfig.addPlugin(require('./eleventy.config.images.js'))
   eleventyConfig.addPlugin(require('./eleventy.config.videos.js'))
 
-  eleventyConfig.addFilter('group_by_year', (array) => {
+  eleventyConfig.addFilter('group_by_year', array => {
     if (!Array.isArray(array) || array.length === 0) {
       return []
     }
@@ -22,6 +25,16 @@ module.exports = function (eleventyConfig) {
       }))
       .reverse()
   })
+
+  eleventyConfig.setLibrary(
+    'md',
+    markdownIt({ html: true }).use(markdownItLinkAttributes, {
+      attrs: {
+        target: '_blank',
+        rel: 'noopener noreferrer'
+      }
+    })
+  )
 
   return {
     templateFormats: ['md', 'liquid'],

@@ -4,7 +4,7 @@ layout: base
 title: Hello, I'm Zhiyuan!
 ---
 
-<a href="javascript:history.back()" class="border-0 text-xl"><span class="mr-2">←</span>Designs</a>
+<a href="javascript:history.back()" class="border-0 text-xl"><span class="mr-2">←</span>Designs overview</a>
 
 {% avatar './zhiyuan-avatar.jpg' %}
 

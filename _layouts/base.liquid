@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}{% if index != true %}{{ ' | Zhiyuan designed' }}{% endif %}</title>
+    <title>{{ title }}{% if index != true %}
+        {{ ' | Zhiyuan designed' }}{% endif %}
+    </title>
     <meta name="description" content="{{ description }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
@@ -14,14 +16,22 @@
     <link rel="stylesheet" href="{{ '/css/tailwind.css' }}">
   </head>
   <body class="bg-stone-100 text-stone-800 h-full max-w-4xl flex flex-col p-4 lg:p-8">
-    <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
-    <main id="main-content" class="mb-4 lg:mb-8">{{ content }}</main>
-    <footer class="mt-auto pb-4 lg:pb-8 text-sm">
+    <main id="main-content" class="mb-8 lg:mb-12">{{ content }}</main>
+    <footer class="pb-8 text-sm">
       <div>2011 - 2023 © Zhiyuan</div>
       <div>Built with
-        <a href="https://www.11ty.dev/" target="_blank">11ty</a>, hosted on
-        <a href="https://pages.cloudflare.com/" target="_blank">Cloudflare Pages</a>, source at
-        <a href="https://github.com/xmflsct/xmflsct-website" target="_blank">GitHub</a>
+        <a
+          href="https://www.11ty.dev/"
+          target="_blank"
+          rel="noopener noreferrer">11ty</a>, hosted on
+        <a
+          href="https://pages.cloudflare.com/"
+          target="_blank"
+          rel="noopener noreferrer">Cloudflare Pages</a>, source at
+        <a
+          href="https://github.com/xmflsct/xmflsct-website"
+          target="_blank"
+          rel="noopener noreferrer">GitHub</a>
       </div>
     </footer>
   </body>
