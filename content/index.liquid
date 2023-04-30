@@ -36,47 +36,42 @@ description: Zhiyuan's selected designs. Passionate and experienced product desi
       element.childNodes.forEach(function(node) {
         if (node.nodeName === 'BUTTON') {
           if (node.attributes.tag.value === tag) {
-            node
-              .classList
-              .remove('border-stone-600')
-              node
-              .classList
-              .remove('text-stone-600')
-            node
-            .classList
-            .add('border-highlight')
-          node
-          .classList
-          .add('bg-highlight')
-        node
-        .classList
-        .add('text-stone-100')
+            node.classList.remove('border-stone-600')
+            node.classList.remove('text-stone-600')
+            node.classList.add('border-highlight')
+            node.classList.add('bg-highlight')
+            node.classList.add('text-stone-100')
+          }
+        }
+      })
     }
+    function unselected(element, tag) {
+      element.childNodes.forEach(function(node) {
+        if (node.nodeName === 'BUTTON') {
+          node.classList.add('border-stone-600')
+          node.classList.add('text-stone-600')
+          node.classList.remove('border-highlight')
+          node.classList.remove('bg-highlight')
+          node.classList.remove('text-stone-100')
+        }
+      })
+    }
+    document.querySelectorAll('[id=case-tile]').forEach(function(tile) {
+      const tag = window.location.hash.slice(1)
+      if (tag.length > 0) {
+        if (tile.attributes.tags.value.includes(tag)) {
+          tile.classList.remove('opacity-40')
+          selected(tile, tag)
+        } else {
+          tile.classList.add('opacity-40')
+          unselected(tile, tag)
+        }
+      } else {
+        tile.classList.remove('opacity-40')
+        unselected(tile, tag)
+      }
+    });
   }
-})}function unselected(element, tag) {
-element.childNodes.forEach(function(node) {
-  if (node.nodeName === 'BUTTON') {
-    node
-      .classList
-      .add('border-stone-600')
-      node
-      .classList
-      .add('text-stone-600')
-    node
-    .classList
-    .remove('border-highlight')
-  node
-  .classList
-  .remove('bg-highlight')
-node
-.classList
-.remove('text-stone-100')}})}document.querySelectorAll('[id=case-tile]').forEach(function(tile) {const tag = window.location.hash.slice(1)if (tag.length > 0) {if (tile
-  .attributes
-  .tags
-  .value
-  .includes(tag)) {
-tile.classList.remove('opacity-40')
-selected(tile, tag)} else {
-tile.classList.add('opacity-40')
-unselected(tile, tag)}} else {tile.classList.remove('opacity-40')unselected(tile, tag)}});}window.onload = () => selectTags()window.onhashchange = () => selectTags()
+  window.onload = () => selectTags()
+  window.onhashchange = () => selectTags()
 </script>

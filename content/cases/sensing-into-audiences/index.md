@@ -3,7 +3,7 @@ layout: project
 year: 2016
 priority: 2
 title: Sensing into Audiences
-tags: Experience
+tags: Research
 description:
 ---
 

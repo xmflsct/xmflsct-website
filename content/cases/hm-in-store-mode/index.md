@@ -3,13 +3,15 @@ layout: project
 year: 2018
 priority: 1
 title: H&M In-Store Mode
-tags: Experience
+tags:
+  - Experience
+  - Research
 description: A new shopping experience! Activate In-Store Mode in the H&M App next time you're shopping in store. Connect to the store's assortment, see if the items you favourited online are in stock, find available sizes, colours and more.
 ---
 
 A new shopping experience! Activate [In-Store Mode](https://hmgroup.com/media/news/general-news-2019/h-m-climbs-to-second-place-in-retail-week-indicator.html) in the H&M App next time you're shopping in store. Connect to the store's assortment, see if the items you favourited online are in stock, find available sizes, colours and more.
 
-{% video 'youtube' ,'BCmtnDMzuzg' ,'© H&M Group production' ,true %}
+{% video 'youtube' ,'BCmtnDMzuzg' ,'© H&M Group production' ,false %}
 
 ## Omni - backed by thousands of stores
 

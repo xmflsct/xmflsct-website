@@ -3,7 +3,9 @@ layout: project
 year: 2013
 priority: 1
 title: Touchee
-tags: Experience
+tags:
+  - Experience
+  - Research
 description: Touchee is designed especially for parens with pre-term babies, stimulating more social interactions within larger framework of family-centred care which is facilitated by bridging virutal and physical worlds of parenting.
 ---
 

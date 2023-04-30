@@ -4,8 +4,8 @@ year: 2019
 priority: 1
 title: H&M App Experience
 tags: 
-  - Experience
   - Research
+  - Experience
 description: Mobile first as an existing global trend, how do we improve the app's experience?
 ---
 
