@@ -1,7 +1,7 @@
 ---
 layout: project
 year: 2012
-priority: 1
+priority: 5
 title: family.feels.fine
 tags: Interaction
 description: family.feels.fine helps families change behaviour for a healthier lifestyle and makes it fun doing it together.

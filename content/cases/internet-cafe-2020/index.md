@@ -1,7 +1,7 @@
 ---
 layout: project
 year: 2012
-priority: 4
+priority: 3
 title: Internet Café 2020
 tags: Interaction
 description: A toolkit for cross-cultural information exchange is developed.
