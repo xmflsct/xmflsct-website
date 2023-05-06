@@ -1,6 +1,6 @@
 ---
 layout: project
-year: 2022
+year: 2020
 priority: 1
 title: Scaling Customer Centricity
 tags: Research

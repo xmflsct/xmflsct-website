@@ -1,7 +1,7 @@
 ---
 layout: project
 year: 2012
-priority: 5
+priority: 1
 title: negative lighting
 tags: Experience
 description: Shadow, and darkness, can be as beneficial as we believe light is.

@@ -1,7 +1,7 @@
 ---
 layout: project
 year: 2012
-priority: 3
+priority: 4
 title: Hephaestus and the Senses
 tags: Research
 description: The module starts with phenomenology originates from philosophy that provides a new insight into what interaction is about.
