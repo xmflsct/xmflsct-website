@@ -15,6 +15,9 @@ h2 {
 h3 {
   @apply font-semibold text-xl mb-4;
 }
+h4 {
+  @apply font-semibold text-lg mb-4;
+}
 @screen lg {
   h1 {
     @apply text-4xl;
@@ -25,16 +28,26 @@ h3 {
   h3 {
     @apply text-2xl;
   }
+  h4 {
+    @apply text-xl;
+  }
 }
 
+a[target="_blank"]::after {
+  mask-image: url(/assets/external-link.svg);
+  mask-repeat: no-repeat;
+  mask-position: bottom;
+  mask-size: 75% auto;
+  @apply content-[''] inline-block w-icon h-icon indent-icon overflow-hidden bg-current hover:bg-highlight;
+}
 a {
-  @apply border-b-2 border-highlight transition duration-150 ease-in-out;
+  @apply border-b-2 border-highlight whitespace-nowrap;
 }
 a:hover {
   @apply text-highlight;
 }
 
-p, blockquote, ul, ol {
+p, blockquote, ul, ol, iframe {
   @apply mb-4 lg:mb-6 text-base lg:text-lg;
 }
 blockquote {
@@ -56,4 +69,8 @@ ol {
 
 hr {
   @apply my-8;
+}
+
+code {
+  @apply text-sm bg-stone-200 py-1 px-2; 
 }

@@ -11,7 +11,8 @@ module.exports = {
         highlight: '#F36C21'
       },
       spacing: {
-        '16/9': '56.25%'
+        '16/9': '56.25%',
+        icon: '1em'
       },
       boxShadow: {
         'image': '0 0 8px 0 rgba(0, 0, 0, 0.08)'
