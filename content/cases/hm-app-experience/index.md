@@ -61,7 +61,7 @@ Above stage sets a timeframe of half a year, inline with the scope of the steeri
 
 Reviewing mobile market maturity on global scale shows that different markets are on different phases of such maturity, and most importantly revenue does not have a linear correlation with app downloads according to [App Annie](https://www.appannie.com/en/)'s research. Therefore, during this stage, we need to focus on develop relationship with our customers while broadening our user base.
 
-This is the moment when we can start trying out and implementing the digital store visions that various internal initiatives are working on while we are at stage 1. These initiatives will bring about refined product exploration journey, [omni experiences](/2018/hm-in-store-mode/), loyalty program, etc.
+This is the moment when we can start trying out and implementing the digital store visions that various internal initiatives are working on while we are at stage 1. These initiatives will bring about refined product exploration journey, [omni experiences](/cases/hm-in-store-mode/), loyalty program, etc.
 
 Key success metrics:
 

@@ -27,7 +27,7 @@ In light of this movement, it is evident back in 2020 that there are almost none
 
 ## Process
 
-My spare time of building [multiple web solutions for SMEs](/2020/covid-response/) allows me to level up on using React and JavaScript based technologies. [React Native](https://reactnative.dev/) thus becomes the top choice, after evaluating the benefits of other frameworks such as [Flutter](https://flutter.dev/). In a mobile application environment where users' tolerance of failures and glitches is much less compared with website environment, a familiar framework contributes to the stableness of the final outcome.
+My spare time of building [multiple web solutions for SMEs](/cases/covid-response/) allows me to level up on using React and JavaScript based technologies. [React Native](https://reactnative.dev/) thus becomes the top choice, after evaluating the benefits of other frameworks such as [Flutter](https://flutter.dev/). In a mobile application environment where users' tolerance of failures and glitches is much less compared with website environment, a familiar framework contributes to the stableness of the final outcome.
 
 ### Decentralized platform
 
@@ -43,7 +43,7 @@ To build an application that connects to an existing protocol, understanding how
 
 ### Where am I in the app
 
-My previous experience of [cleaning up H&M's app](/2019/hm-app-experience/) sets a clear starting point to define tooot app's structure. The core consits of 3 needs: 1) what I can read; 2) what I can write; 3) what I have done. Bottom tab navigation is by far the best navigation approach when above purposes can be defined clearly.
+My previous experience of [cleaning up H&M's app](/cases/hm-app-experience/) sets a clear starting point to define tooot app's structure. The core consits of 3 needs: 1) what I can read; 2) what I can write; 3) what I have done. Bottom tab navigation is by far the best navigation approach when above purposes can be defined clearly.
 
 In tooot, 2 tabs on the left dedicates to different timelines that a decentralized platform normally offers: my timeline, timeline on this particular server, and federated timeline. During closed and open beta period currently, there are user feedbacks suggesting to open up customization possibility of these timelines. This is yet to be discovered further after MVP.
 

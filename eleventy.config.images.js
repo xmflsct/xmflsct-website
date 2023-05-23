@@ -3,14 +3,14 @@ const path = require('path')
 
 async function imageShortcode(src, alt, credit, website) {
   const metadata = await Image(`${path.dirname(this.page.inputPath)}/${src}`, {
-    widths: [832],
+    widths: [832, 1664, 'auto'],
     formats: ['webp', 'jpeg'],
     outputDir: path.dirname(this.page.outputPath),
     urlPath: this.page.url
   })
   const imageAttributes = {
     alt,
-    sizes: '',
+    sizes: [''],
     loading: 'lazy',
     decoding: 'async'
   }
