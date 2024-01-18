@@ -4,6 +4,7 @@ const markdownItLinkAttributes = require('markdown-it-link-attributes')
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('./content/assets')
+  eleventyConfig.addPassthroughCopy('./content/ads.txt')
   eleventyConfig.addPassthroughCopy('./content/favicon.ico')
   eleventyConfig.addPassthroughCopy('./content/about-zhiyuan/CV-Zhiyuan_Zheng.pdf')
 
