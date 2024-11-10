@@ -10,13 +10,14 @@
     "build:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --postcss"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-img": "^3.1.0",
-    "autoprefixer": "^10.4.14",
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-img": "^5.0.0",
+    "autoprefixer": "^10.4.20",
     "lodash": "^4.17.21",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^14.1.0",
     "markdown-it-link-attributes": "^4.0.1",
-    "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.2"
-  }
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14"
+  },
+  "packageManager": "yarn@4.5.1"
 }
