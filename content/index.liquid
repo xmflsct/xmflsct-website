@@ -56,7 +56,7 @@ description: Zhiyuan's selected designs. Passionate and experienced product desi
         }
       })
     }
-    document.querySelectorAll('[id=case-tile]').forEach(function(tile) {
+    document.querySelectorAll('.case-tile').forEach(function(tile) {
       const tag = window.location.hash.slice(1)
       if (tag.length > 0) {
         if (tile.attributes.tags.value.includes(tag)) {
