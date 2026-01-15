@@ -33,7 +33,7 @@ description: Zhiyuan's selected designs. Passionate and experienced product desi
 <script>
   function selectTags() {
     function selected(element, tag) {
-      element.childNodes.forEach(function(node) {
+      for (const node of element.children) {
         if (node.nodeName === 'BUTTON') {
           if (node.attributes.tag.value === tag) {
             node.classList.remove('border-stone-600')
@@ -43,10 +43,10 @@ description: Zhiyuan's selected designs. Passionate and experienced product desi
             node.classList.add('text-stone-100')
           }
         }
-      })
+      }
     }
     function unselected(element, tag) {
-      element.childNodes.forEach(function(node) {
+      for (const node of element.children) {
         if (node.nodeName === 'BUTTON') {
           node.classList.add('border-stone-600')
           node.classList.add('text-stone-600')
@@ -54,7 +54,7 @@ description: Zhiyuan's selected designs. Passionate and experienced product desi
           node.classList.remove('bg-highlight')
           node.classList.remove('text-stone-100')
         }
-      })
+      }
     }
     document.querySelectorAll('.case-tile').forEach(function(tile) {
       const tag = window.location.hash.slice(1)
