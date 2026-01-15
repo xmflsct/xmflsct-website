@@ -16,7 +16,7 @@ function videoShortcode(host, source, credit, autoplay) {
   }
 
   return `<div class="my-4 lg:my-6 bg-stone-200">
-    <div class="relative w-full h-0 pb-16/9 overflow-hidden"><iframe src=${url} allow="autoplay; encrypted-media" frameBorder="0" class="absolute top-0 left-0 w-full h-full border-0"></iframe></div>
+    <div class="relative w-full h-0 pb-16/9 overflow-hidden"><iframe src=${url} allow="autoplay; encrypted-media" frameBorder="0" class="absolute top-0 left-0 w-full h-full border-0" loading="lazy"></iframe></div>
     ${
       typeof credit === 'string'
         ? `<figcaption class="font-serif italic text-sm opacity-50 text-center mt-1">${credit}</figcaption>`
