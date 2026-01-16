@@ -10,7 +10,7 @@ async function imageShortcode(src, alt, credit, website) {
   })
   const imageAttributes = {
     alt,
-    sizes: [''],
+    sizes: '(min-width: 1024px) 832px, calc(100vw - 32px)',
     loading: 'lazy',
     decoding: 'async'
   }
