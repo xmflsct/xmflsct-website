@@ -74,4 +74,12 @@ description: Zhiyuan's selected designs. Passionate and experienced product desi
   }
   window.onload = () => selectTags()
   window.onhashchange = () => selectTags()
+
+  function checkTags(tags) {
+    if (tags === window.location.hash.slice(1)) {
+      window.location.assign("#")
+    } else {
+      window.location.assign(`#${tags}`)
+    }
+  }
 </script>

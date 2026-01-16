@@ -6,13 +6,3 @@
     <button onclick="checkTags('{{ tag }}')" tag="{{ tag }}" class="border border-stone-600 text-stone-600 hover:border-highlight hover:bg-highlight hover:text-stone-100 transition-colors text-xs py-0.5 px-2 rounded-full">{{ tag }}</button>
   {%- endfor -%}
 </div>
-
-<script>
-  function checkTags(tags) {
-    if (tags === window.location.hash.slice(1)) {
-      window.location.assign("#")
-    } else {
-      window.location.assign(`#${tags}`)
-    }
-  }
-</script>
