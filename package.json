@@ -4,20 +4,19 @@
   "scripts": {
     "dev": "yarn dev:11ty & yarn dev:css",
     "dev:11ty": "eleventy --serve",
-    "dev:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --watch --postcss",
+    "dev:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --watch",
     "build": "yarn build:11ty && yarn build:css",
     "build:11ty": "eleventy",
-    "build:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --postcss"
+    "build:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-img": "^5.0.0",
-    "autoprefixer": "^10.4.20",
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-img": "^6.0.4",
+    "@tailwindcss/cli": "^4.1.18",
     "lodash": "^4.17.21",
     "markdown-it": "^14.1.0",
     "markdown-it-link-attributes": "^4.0.1",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^4.1.18"
   },
   "packageManager": "yarn@4.5.1"
 }
