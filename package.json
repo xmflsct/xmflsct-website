@@ -7,7 +7,8 @@
     "dev:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --watch --postcss",
     "build": "yarn build:11ty && yarn build:css",
     "build:11ty": "eleventy",
-    "build:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --postcss"
+    "build:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --postcss",
+    "deploy": "yarn build && wrangler deploy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
@@ -17,7 +18,8 @@
     "markdown-it": "^14.1.0",
     "markdown-it-link-attributes": "^4.0.1",
     "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^3.4.14",
+    "wrangler": "^4.59.2"
   },
   "packageManager": "yarn@4.5.1"
 }
