@@ -4,5 +4,15 @@
     "compatibility_date": "2026-01-18",
     "assets": {
         "directory": "_site"
-    }
+    },
+    "routes": [
+        {
+            "pattern": "xmflsct.com",
+            "custom_domain": true
+        },
+        {
+            "pattern": "www.xmflsct.com",
+            "custom_domain": true
+        }
+    ]
 }
