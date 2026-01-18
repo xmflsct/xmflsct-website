@@ -13,6 +13,10 @@
         {
             "pattern": "www.xmflsct.com",
             "custom_domain": true
+        },
+        {
+            "pattern": "zhiyuan.pm",
+            "custom_domain": true
         }
     ]
 }
