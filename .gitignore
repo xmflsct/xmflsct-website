@@ -9,4 +9,7 @@
 !.yarn/versions
 !.yarn/plugins
 
+# Generated wrangler schema for Yarn PnP
+wrangler-schema.json
+
 .DS_Store

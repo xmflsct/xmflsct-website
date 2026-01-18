@@ -1,5 +1,0 @@
-name = "xmflsct-website"
-compatibility_date = "2025-02-14"
-
-[assets]
-directory = "_site"
