@@ -1,9 +1,9 @@
 {
-    "$schema": "./wrangler-schema.json",
+    "$schema": "./node_modules/wrangler/config-schema.json",
     "name": "xmflsct-website",
     "compatibility_date": "2026-01-18",
     "assets": {
-        "directory": "_site"
+        "directory": "dist"
     },
     "routes": [
         {

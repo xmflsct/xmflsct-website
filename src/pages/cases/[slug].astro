@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from 'astro:content';
+import Project from '../../layouts/Project.astro';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return cases.map((entry) => {
+    // Extract folder name from id (e.g., "closer-with-hue/index.mdx" -> "closer-with-hue")
+    const slug = entry.id.split('/')[0];
+    return {
+      params: { slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Project 
+  title={entry.data.title} 
+  description={entry.data.description ?? ''}
+  tags={entry.data.tags}
+  year={entry.data.year}
+>
+  <Content />
+</Project>
