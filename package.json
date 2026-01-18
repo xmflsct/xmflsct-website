@@ -7,7 +7,9 @@
     "dev:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --watch",
     "build": "yarn build:11ty && yarn build:css",
     "build:11ty": "eleventy",
-    "build:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css"
+    "build:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css",
+    "deploy": "yarn build && wrangler deploy",
+    "postinstall": "node -e \"console.log(JSON.stringify(require('wrangler/config-schema.json'), null, 2))\" > wrangler-schema.json"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
@@ -16,7 +18,8 @@
     "lodash": "^4.17.21",
     "markdown-it": "^14.1.0",
     "markdown-it-link-attributes": "^4.0.1",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "wrangler": "^4.59.2"
   },
   "packageManager": "yarn@4.5.1"
 }
