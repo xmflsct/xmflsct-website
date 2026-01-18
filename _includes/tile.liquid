@@ -1,8 +1,0 @@
-<div
-  tags="{{ project.tags | join: "-" }}"
-  class="case-tile mt-2 flex flex-row items-center gap-2 transition-opacity">
-  <a href="{{ url }}" class="group border-none text-lg">{{ project.title }}</a>
-  {%- for tag in project.tags -%}
-    <button onclick="checkTags('{{ tag }}')" tag="{{ tag }}" class="border border-stone-600 text-stone-600 hover:border-highlight hover:bg-highlight hover:text-stone-100 transition-colors text-xs py-0.5 px-2 rounded-full">{{ tag }}</button>
-  {%- endfor -%}
-</div>

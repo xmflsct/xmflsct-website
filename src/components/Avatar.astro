@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+}
+
+const { src } = Astro.props;
+---
+
+<div class="w-40 bg-stone-200 rounded-full overflow-hidden my-4 lg:my-8">
+  <a href="javascript:history.back()">
+    <Image 
+      src={src} 
+      alt="Zhiyuan's avatar"
+      width={320}
+      loading="lazy"
+      decoding="async"
+    />
+  </a>
+</div>

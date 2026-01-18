@@ -1,0 +1,22 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Avatar from '../../components/Avatar.astro';
+import avatarImage from '../../content/pages/about-zhiyuan/zhiyuan-avatar.jpg';
+
+const entry = await getEntry('pages', 'about-zhiyuan');
+if (!entry) {
+  return Astro.redirect('/');
+}
+const { Content } = await render(entry);
+---
+
+<Base title={entry.data.title} description="About Zhiyuan - product designer based in the Netherlands">
+  <a href="javascript:history.back()" class="border-0 text-xl"><span class="mr-2">←</span>Designs overview</a>
+
+  <Avatar src={avatarImage} />
+
+  <div class="prose">
+    <Content />
+  </div>
+</Base>

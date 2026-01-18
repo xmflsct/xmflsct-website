@@ -1,0 +1,30 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  year: number;
+}
+
+const { title, description, tags, year } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <h1 class="m-0">{title}</h1>
+  <div class="mt-2 lg:mt-4 mb-8 lg:mb-10 flex flex-row items-center gap-1">
+    {tags.map((tag) => (
+      <a href={`/#${tag}`} class="border border-highlight bg-highlight text-stone-100 hover:text-stone-100 text-xs py-0.5 px-2 rounded-full">{tag}</a>
+    ))}
+    <span>in {year}</span>
+  </div>
+
+  <article>
+    <slot />
+  </article>
+
+  <a href="javascript:history.back()" class="border-0 text-xl">
+    <span class="mr-2">←</span>Designs overview
+  </a>
+</Base>
