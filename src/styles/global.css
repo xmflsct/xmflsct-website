@@ -53,7 +53,7 @@ a[target="_blank"]::after {
   @apply content-[''] inline-block w-icon h-icon indent-icon overflow-hidden bg-current hover:bg-highlight;
 }
 a {
-  @apply border-b-2 border-highlight whitespace-nowrap;
+  @apply border-b-2 border-highlight;
 }
 a:hover {
   @apply text-highlight;

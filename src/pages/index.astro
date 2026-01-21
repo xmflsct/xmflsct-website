@@ -40,8 +40,7 @@ for (const year of sortedYears) {
     <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare</a>.
   </h1>
 
-  <section class="mb-12">
-    <h2 class="font-serif font-semibold text-xl lg:text-2xl mb-4">Launches at Cloudflare</h2>
+  <section>
     <div>
       {blogs.map((blog) => (
         <BlogTile 
@@ -54,8 +53,9 @@ for (const year of sortedYears) {
     </div>
   </section>
 
+  <hr class="h-px bg-stone-300 border-0">
+
   <section>
-    <h2 class="font-serif font-semibold text-xl lg:text-2xl mb-4">Selected Designs</h2>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-8">
       {sortedYears.map((year) => (
         <div>

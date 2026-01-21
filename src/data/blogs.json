@@ -1,55 +1,42 @@
 [
   {
-    "slug": "security-analytics",
-    "title": "New! Security Analytics provides a comprehensive view across all your traffic",
-    "date": "2022-12-09",
-    "url": "https://blog.cloudflare.com/security-analytics/",
-    "hn": {
-      "points": 4,
-      "comments": 0,
-      "hnUrl": "https://news.ycombinator.com/item?id=39591761"
-    }
+    "url": "https://blog.cloudflare.com/how-cloudflares-client-side-security-made-the-npm-supply-chain-attack-a-non/",
+    "title": "How Cloudflare’s client-side security made the npm supply chain attack a non-event",
+    "date": "2025-10-24"
   },
   {
-    "slug": "cloudflare-npm-supply-chain-attack",
-    "title": "How Cloudflare's client-side security made the npm supply chain attack a non-event",
-    "date": "2025-10-24",
-    "url": "https://blog.cloudflare.com/cloudflare-npm-supply-chain-attack/"
-  },
-  {
-    "slug": "take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai",
+    "url": "https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/",
     "title": "Take control of public AI application security with Cloudflare's Firewall for AI",
-    "date": "2025-03-19",
-    "url": "https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/"
+    "date": "2025-03-19"
   },
   {
-    "slug": "how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer",
+    "url": "https://blog.cloudflare.com/how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer/",
     "title": "How we train AI to uncover malicious JavaScript intent and make web surfing safer",
-    "date": "2025-03-19",
-    "url": "https://blog.cloudflare.com/how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer/"
+    "date": "2025-03-19"
   },
   {
-    "slug": "cloudflare-security-posture-management",
-    "title": "One platform to manage your company's predictive security posture with Cloudflare",
-    "date": "2025-03-18",
-    "url": "https://blog.cloudflare.com/cloudflare-security-posture-management/"
+    "url": "https://blog.cloudflare.com/cloudflare-security-posture-management/",
+    "title": "One platform to manage your company’s predictive security posture with Cloudflare",
+    "date": "2025-03-18"
   },
   {
-    "slug": "collect-all-your-cookies-in-one-jar",
+    "url": "https://blog.cloudflare.com/collect-all-your-cookies-in-one-jar/",
     "title": "Collect all your cookies in one jar with Page Shield Cookie Monitor",
-    "date": "2024-03-07",
-    "url": "https://blog.cloudflare.com/collect-all-your-cookies-in-one-jar/"
+    "date": "2024-03-07"
   },
   {
-    "slug": "account-security-analytics-and-events",
+    "url": "https://blog.cloudflare.com/account-security-analytics-and-events/",
     "title": "Account Security Analytics and Events: better visibility over all domains",
-    "date": "2023-03-18",
-    "url": "https://blog.cloudflare.com/account-security-analytics-and-events/"
+    "date": "2023-03-18"
   },
   {
-    "slug": "new-waf-experience",
+    "url": "https://blog.cloudflare.com/security-analytics/",
+    "title": "New! Security Analytics provides a comprehensive view across all your traffic",
+    "date": "2022-12-09"
+  },
+  {
+    "url": "https://blog.cloudflare.com/new-waf-experience/",
     "title": "A new WAF experience",
-    "date": "2022-03-15",
-    "url": "https://blog.cloudflare.com/new-waf-experience/"
+    "date": "2022-03-15"
   }
 ]
