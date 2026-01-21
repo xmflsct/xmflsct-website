@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Tile from '../components/Tile.astro';
+import BlogTile from '../components/BlogTile.astro';
+import blogs from '../data/blogs.json';
 
 const allCases = await getCollection('cases');
 
@@ -38,20 +40,37 @@ for (const year of sortedYears) {
     <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare</a>.
   </h1>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-8">
-    {sortedYears.map((year) => (
-      <div>
-        <h2 class="font-sans font-semibold text-sm text-stone-400 m-0">{year}</h2>
-        {casesByYear[year].map((caseEntry) => (
-          <Tile 
-            url={`/cases/${caseEntry.id.split('/')[0]}/`}
-            title={caseEntry.data.title}
-            tags={caseEntry.data.tags}
-          />
-        ))}
-      </div>
-    ))}
-  </div>
+  <section class="mb-12">
+    <h2 class="font-serif font-semibold text-xl lg:text-2xl mb-4">Launches at Cloudflare</h2>
+    <div>
+      {blogs.map((blog) => (
+        <BlogTile 
+          url={blog.url}
+          title={blog.title}
+          date={blog.date}
+          hn={blog.hn}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2 class="font-serif font-semibold text-xl lg:text-2xl mb-4">Selected Designs</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-8">
+      {sortedYears.map((year) => (
+        <div>
+          <h3 class="font-sans font-semibold text-sm text-stone-400 m-0">{year}</h3>
+          {casesByYear[year].map((caseEntry) => (
+            <Tile 
+              url={`/cases/${caseEntry.id.split('/')[0]}/`}
+              title={caseEntry.data.title}
+              tags={caseEntry.data.tags}
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
 
   <script>
     function selectTags() {

@@ -1,0 +1,36 @@
+---
+interface Props {
+  url: string;
+  title: string;
+  date: string;
+  hn?: {
+    points: number;
+    comments: number;
+    hnUrl: string;
+  };
+}
+
+const { url, title, date, hn } = Astro.props;
+
+// Format date as "Mar 2024"
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  month: 'short',
+  year: 'numeric'
+});
+---
+
+<div class="blog-tile mt-2 flex flex-row items-start gap-2">
+  <a href={url} target="_blank" rel="noopener noreferrer" class="group border-none text-lg whitespace-normal">{title}</a>
+  <span class="text-stone-400 text-sm whitespace-nowrap">{formattedDate}</span>
+  {hn && hn.points > 0 && (
+    <a 
+      href={hn.hnUrl} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="border border-stone-600 text-stone-600 hover:border-highlight hover:bg-highlight hover:text-stone-100 transition-colors text-xs py-0.5 px-2 rounded-full whitespace-nowrap"
+      title={`${hn.points} points, ${hn.comments} comments on Hacker News`}
+    >
+      {hn.points} ↑
+    </a>
+  )}
+</div>
