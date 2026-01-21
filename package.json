@@ -3,10 +3,11 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "prebuild": "node scripts/fetchBlogs.mjs",
+    "dev": "npm run prebuild && astro dev",
+    "build": "npm run prebuild && astro build",
     "preview": "astro preview",
-    "deploy": "astro build && wrangler deploy",
+    "deploy": "npm run prebuild && astro build && wrangler deploy",
     "postinstall": "node -e \"console.log(JSON.stringify(require('wrangler/config-schema.json'), null, 2))\" > wrangler-schema.json"
   },
   "devDependencies": {
