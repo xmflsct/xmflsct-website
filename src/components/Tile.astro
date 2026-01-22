@@ -9,7 +9,7 @@ const { url, title, tags } = Astro.props;
 ---
 
 <div
-  data-tags={tags.join("-")}
+  data-tags={tags.join(",")}
   class="case-tile mt-2 flex flex-row items-center gap-2 transition-opacity"
 >
   <a href={url} class="group border-none text-lg">{title}</a>
