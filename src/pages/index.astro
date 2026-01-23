@@ -103,7 +103,7 @@ for (const year of sortedYears) {
         const tag = window.location.hash.slice(1);
         const tags = (tile as HTMLElement).dataset.tags || '';
         if (tag.length > 0) {
-          if (tags.includes(tag)) {
+          if (tags.split(',').includes(tag)) {
             tile.classList.remove('opacity-40');
             selected(tile, tag);
           } else {
