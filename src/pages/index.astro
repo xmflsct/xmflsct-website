@@ -119,12 +119,19 @@ for (const year of sortedYears) {
     window.onload = () => selectTags();
     window.onhashchange = () => selectTags();
 
-    (window as any).checkTags = function(tags: string) {
-      if (tags === window.location.hash.slice(1)) {
-        window.location.assign("#");
-      } else {
-        window.location.assign(`#${tags}`);
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      const button = target.closest('button[data-tag]');
+      if (button) {
+        const tag = (button as HTMLElement).dataset.tag;
+        if (tag) {
+          if (tag === window.location.hash.slice(1)) {
+            window.location.assign("#");
+          } else {
+            window.location.assign(`#${tag}`);
+          }
+        }
       }
-    };
+    });
   </script>
 </Base>
