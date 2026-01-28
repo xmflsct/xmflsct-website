@@ -11,10 +11,10 @@ const { host, source, credit, autoplay = false } = Astro.props;
 let url: string;
 switch (host) {
   case 'youtube':
-    url = `https://www.youtube.com/embed/${source}?autoplay=${autoplay ? '1' : '0'}&loop=0&controls=0&modestbranding=1`;
+    url = `https://www.youtube.com/embed/${source}?autoplay=${autoplay ? '1' : '0'}&mute=${autoplay ? '1' : '0'}&loop=0&controls=0&modestbranding=1`;
     break;
   case 'vimeo':
-    url = `https://player.vimeo.com/video/${source}?autoplay=${autoplay ? '1' : '0'}&loop=0&title=0&byline=0&portrait=0`;
+    url = `https://player.vimeo.com/video/${source}?autoplay=${autoplay ? '1' : '0'}&muted=${autoplay ? '1' : '0'}&loop=0&title=0&byline=0&portrait=0`;
     break;
 }
 ---
@@ -26,7 +26,7 @@ switch (host) {
       allow="autoplay; encrypted-media" 
       frameborder="0" 
       class="absolute top-0 left-0 w-full h-full border-0" 
-      loading="lazy"
+      loading={autoplay ? 'eager' : 'lazy'}
     ></iframe>
   </div>
   {credit && (
