@@ -1,22 +1,24 @@
 {
-    "$schema": "./node_modules/wrangler/config-schema.json",
-    "name": "xmflsct-website",
-    "compatibility_date": "2026-01-18",
-    "assets": {
-        "directory": "dist"
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "xmflsct-website",
+  "compatibility_date": "2026-01-18",
+  "assets": {
+    "directory": "dist",
+  },
+  "workers_dev": false,
+  "preview_urls": true,
+  "routes": [
+    {
+      "pattern": "xmflsct.com",
+      "custom_domain": true,
     },
-    "routes": [
-        {
-            "pattern": "xmflsct.com",
-            "custom_domain": true
-        },
-        {
-            "pattern": "www.xmflsct.com",
-            "custom_domain": true
-        },
-        {
-            "pattern": "zhiyuan.pm",
-            "custom_domain": true
-        }
-    ]
+    {
+      "pattern": "www.xmflsct.com",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "zhiyuan.pm",
+      "custom_domain": true,
+    },
+  ],
 }
