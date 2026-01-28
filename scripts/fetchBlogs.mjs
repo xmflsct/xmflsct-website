@@ -3,7 +3,7 @@
  * for author "xmflsct" (Zhiyuan Zheng) using the RSS feed
  */
 
-import { writeFileSync, mkdirSync } from 'fs';
+import { writeFile, mkdir } from 'fs/promises';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -81,10 +81,10 @@ async function main() {
         });
 
         // Ensure output directory exists
-        mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
+        await mkdir(dirname(OUTPUT_PATH), { recursive: true });
 
         // Write to file
-        writeFileSync(OUTPUT_PATH, JSON.stringify(posts, null, 2));
+        await writeFile(OUTPUT_PATH, JSON.stringify(posts, null, 2));
         console.log(`Wrote ${posts.length} posts to ${OUTPUT_PATH}`);
 
     } catch (error) {
