@@ -116,7 +116,7 @@ for (const year of sortedYears) {
         }
       });
     }
-    window.onload = () => selectTags();
+    document.addEventListener('DOMContentLoaded', () => selectTags());
     window.onhashchange = () => selectTags();
 
     document.addEventListener('click', (event) => {
