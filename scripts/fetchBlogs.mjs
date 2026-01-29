@@ -11,6 +11,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const RSS_URL = 'https://blog.cloudflare.com/author/xmflsct/rss';
 const OUTPUT_PATH = join(__dirname, '../src/data/blogs.json');
 
+const TITLE_REGEX = /<title>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/i;
+const LINK_REGEX = /<link>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/link>/i;
+const PUBDATE_REGEX = /<pubDate>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/pubDate>/i;
+
 /**
  * Parse RSS date to ISO format (YYYY-MM-DD)
  */
@@ -22,8 +26,7 @@ function parseRssDate(dateStr) {
 /**
  * Extract text content from CDATA or plain XML
  */
-function extractContent(xml, tagName) {
-    const regex = new RegExp(`<${tagName}>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?<\\/${tagName}>`, 'i');
+function extractContent(xml, regex) {
     const match = xml.match(regex);
     if (match) {
         return match[1].trim();
@@ -50,9 +53,9 @@ async function fetchBlogPosts() {
     const items = xml.match(itemPattern) || [];
 
     for (const item of items) {
-        const title = extractContent(item, 'title');
-        const link = extractContent(item, 'link');
-        const pubDate = extractContent(item, 'pubDate');
+        const title = extractContent(item, TITLE_REGEX);
+        const link = extractContent(item, LINK_REGEX);
+        const pubDate = extractContent(item, PUBDATE_REGEX);
 
         if (title && link && pubDate) {
             posts.push({
@@ -76,9 +79,7 @@ async function main() {
         const posts = await fetchBlogPosts();
 
         // Sort by date (newer first)
-        posts.sort((a, b) => {
-            return new Date(b.date).getTime() - new Date(a.date).getTime();
-        });
+        posts.sort((a, b) => b.date.localeCompare(a.date));
 
         // Ensure output directory exists
         await mkdir(dirname(OUTPUT_PATH), { recursive: true });
