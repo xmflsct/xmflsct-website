@@ -19,11 +19,17 @@ function parseRssDate(dateStr) {
     return date.toISOString().split('T')[0];
 }
 
+const regexCache = new Map();
+
 /**
  * Extract text content from CDATA or plain XML
  */
 function extractContent(xml, tagName) {
-    const regex = new RegExp(`<${tagName}>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?<\\/${tagName}>`, 'i');
+    let regex = regexCache.get(tagName);
+    if (!regex) {
+        regex = new RegExp(`<${tagName}>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?<\\/${tagName}>`, 'i');
+        regexCache.set(tagName, regex);
+    }
     const match = xml.match(regex);
     if (match) {
         return match[1].trim();
