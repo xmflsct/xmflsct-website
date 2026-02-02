@@ -73,55 +73,80 @@ for (const year of sortedYears) {
   </section>
 
   <script>
-    function selectTags() {
-      function selected(element: Element, tag: string) {
-        for (const node of element.children) {
-          if (node.nodeName === 'BUTTON') {
-            const btn = node as HTMLElement;
-            if (btn.dataset.tag === tag) {
-              btn.classList.remove('border-stone-600');
-              btn.classList.remove('text-stone-600');
-              btn.classList.add('border-highlight');
-              btn.classList.add('bg-highlight');
-              btn.classList.add('text-stone-100');
-            }
-          }
-        }
+    type CaseData = {
+      element: HTMLElement;
+      tags: Set<string>;
+      buttons: { element: HTMLElement; tag: string }[];
+    };
+
+    let cachedCases: CaseData[] | null = null;
+
+    function getCachedCases(): CaseData[] {
+      if (!cachedCases) {
+        const tiles = document.querySelectorAll('.case-tile');
+        cachedCases = Array.from(tiles).map((tile) => {
+          const el = tile as HTMLElement;
+          const tagStr = el.dataset.tags || '';
+          const tags = new Set(tagStr ? tagStr.split(',') : []);
+
+          // Using the new .tag-btn class for efficient querying
+          const buttonEls = el.querySelectorAll('.tag-btn');
+          const buttons = Array.from(buttonEls).map((btn) => ({
+            element: btn as HTMLElement,
+            tag: (btn as HTMLElement).dataset.tag || ''
+          }));
+
+          return { element: el, tags, buttons };
+        });
       }
-      function unselected(element: Element) {
-        for (const node of element.children) {
-          if (node.nodeName === 'BUTTON') {
-            node.classList.add('border-stone-600');
-            node.classList.add('text-stone-600');
-            node.classList.remove('border-highlight');
-            node.classList.remove('bg-highlight');
-            node.classList.remove('text-stone-100');
-          }
-        }
-      }
-      document.querySelectorAll('.case-tile').forEach(function(tile) {
-        const tag = window.location.hash.slice(1);
-        const tags = (tile as HTMLElement).dataset.tags || '';
-        if (tag.length > 0) {
-          if (tags.split(',').includes(tag)) {
-            tile.classList.remove('opacity-40');
-            selected(tile, tag);
-          } else {
-            tile.classList.add('opacity-40');
-            unselected(tile);
-          }
-        } else {
-          tile.classList.remove('opacity-40');
-          unselected(tile);
-        }
-      });
+      return cachedCases;
     }
+
+    function selectTags() {
+      const cases = getCachedCases();
+      const activeTag = window.location.hash.slice(1);
+      const hasActiveTag = activeTag.length > 0;
+
+      for (const caseData of cases) {
+        const { element, tags, buttons } = caseData;
+
+        // Visibility logic
+        let isVisible = true;
+        if (hasActiveTag) {
+          isVisible = tags.has(activeTag);
+        }
+
+        // Update opacity
+        if (isVisible) {
+          element.classList.remove('opacity-40');
+        } else {
+          element.classList.add('opacity-40');
+        }
+
+        // Update buttons highlighting
+        for (const btnData of buttons) {
+          const btn = btnData.element;
+          // Highlight if matches active tag
+          const isSelected = hasActiveTag && btnData.tag === activeTag;
+
+          if (isSelected) {
+            btn.classList.remove('border-stone-600', 'text-stone-600');
+            btn.classList.add('border-highlight', 'bg-highlight', 'text-stone-100');
+          } else {
+            // Reset to default
+            btn.classList.add('border-stone-600', 'text-stone-600');
+            btn.classList.remove('border-highlight', 'bg-highlight', 'text-stone-100');
+          }
+        }
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => selectTags());
     window.onhashchange = () => selectTags();
 
     document.addEventListener('click', (event) => {
       const target = event.target as HTMLElement;
-      const button = target.closest('button[data-tag]');
+      const button = target.closest('.tag-btn');
       if (button) {
         const tag = (button as HTMLElement).dataset.tag;
         if (tag) {

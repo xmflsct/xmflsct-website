@@ -1,0 +1,12 @@
+
+> preview
+> astro preview
+
+Port 4321 is in use, trying another one...
+Port 4322 is in use, trying another one...
+Port 4323 is in use, trying another one...
+
+ astro  v5.16.11 ready in 49 ms
+
+┃ Local    http://localhost:4324/
+┃ Network  use --host to expose

@@ -16,7 +16,7 @@ const { url, title, tags } = Astro.props;
   {tags.map((tag) => (
     <button
       data-tag={tag}
-      class="border border-stone-600 text-stone-600 hover:border-highlight hover:bg-highlight hover:text-stone-100 transition-colors text-xs py-0.5 px-2 rounded-full"
+      class="tag-btn border border-stone-600 text-stone-600 hover:border-highlight hover:bg-highlight hover:text-stone-100 transition-colors text-xs py-0.5 px-2 rounded-full"
     >
       {tag}
     </button>
