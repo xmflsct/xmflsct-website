@@ -99,11 +99,16 @@ for (const year of sortedYears) {
           }
         }
       }
+      const tag = window.location.hash.slice(1);
+      const isTagPresent = tag.length > 0;
+      const startPattern = tag + ',';
+      const endPattern = ',' + tag;
+      const midPattern = ',' + tag + ',';
+
       document.querySelectorAll('.case-tile').forEach(function(tile) {
-        const tag = window.location.hash.slice(1);
         const tags = (tile as HTMLElement).dataset.tags || '';
-        if (tag.length > 0) {
-          if (tags.split(',').includes(tag)) {
+        if (isTagPresent) {
+          if (tags === tag || tags.startsWith(startPattern) || tags.endsWith(endPattern) || tags.includes(midPattern)) {
             tile.classList.remove('opacity-40');
             selected(tile, tag);
           } else {
