@@ -6,15 +6,9 @@ interface Props {
 }
 
 const { url, title, date } = Astro.props;
-
-// Format date as "Mar 2024"
-const formattedDate = new Date(date).toLocaleDateString('en-CA', {
-  month: '2-digit',
-  year: 'numeric'
-});
 ---
 
 <div class="my-4 md:my-3 flex flex-col md:flex md:flex-row md:items-center md:gap-4 overflow-hidden">
-  <span class="text-stone-400 md:text-sm shrink-0">{formattedDate}</span>
+  <span class="text-stone-400 md:text-sm shrink-0">{date}</span>
   <a href={url} target="_blank" rel="noopener noreferrer" class="border-none text-lg">{title}</a>
 </div>
