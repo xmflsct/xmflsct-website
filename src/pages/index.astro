@@ -75,17 +75,13 @@ for (const year of sortedYears) {
   <script>
     function selectTags() {
       function selected(element: Element, tag: string) {
-        for (const node of element.children) {
-          if (node.nodeName === 'BUTTON') {
-            const btn = node as HTMLElement;
-            if (btn.dataset.tag === tag) {
-              btn.classList.remove('border-stone-600');
-              btn.classList.remove('text-stone-600');
-              btn.classList.add('border-highlight');
-              btn.classList.add('bg-highlight');
-              btn.classList.add('text-stone-100');
-            }
-          }
+        const btn = element.querySelector(`button[data-tag="${CSS.escape(tag)}"]`);
+        if (btn) {
+          btn.classList.remove('border-stone-600');
+          btn.classList.remove('text-stone-600');
+          btn.classList.add('border-highlight');
+          btn.classList.add('bg-highlight');
+          btn.classList.add('text-stone-100');
         }
       }
       function unselected(element: Element) {
