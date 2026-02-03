@@ -121,6 +121,7 @@ for (const year of sortedYears) {
         }
       });
     }
+    // Optimization: Use DOMContentLoaded for faster interactivity
     document.addEventListener('DOMContentLoaded', () => selectTags());
     window.onhashchange = () => selectTags();
 
