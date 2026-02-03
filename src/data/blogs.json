@@ -2,41 +2,49 @@
   {
     "url": "https://blog.cloudflare.com/how-cloudflares-client-side-security-made-the-npm-supply-chain-attack-a-non/",
     "title": "How Cloudflare’s client-side security made the npm supply chain attack a non-event",
-    "date": "2025-10-24"
+    "date": "2025-10-24",
+    "formattedDate": "2025-10"
   },
   {
     "url": "https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/",
     "title": "Take control of public AI application security with Cloudflare's Firewall for AI",
-    "date": "2025-03-19"
+    "date": "2025-03-19",
+    "formattedDate": "2025-03"
   },
   {
     "url": "https://blog.cloudflare.com/how-we-train-ai-to-uncover-malicious-javascript-intent-and-make-web-surfing-safer/",
     "title": "How we train AI to uncover malicious JavaScript intent and make web surfing safer",
-    "date": "2025-03-19"
+    "date": "2025-03-19",
+    "formattedDate": "2025-03"
   },
   {
     "url": "https://blog.cloudflare.com/cloudflare-security-posture-management/",
     "title": "One platform to manage your company’s predictive security posture with Cloudflare",
-    "date": "2025-03-18"
+    "date": "2025-03-18",
+    "formattedDate": "2025-03"
   },
   {
     "url": "https://blog.cloudflare.com/collect-all-your-cookies-in-one-jar/",
     "title": "Collect all your cookies in one jar with Page Shield Cookie Monitor",
-    "date": "2024-03-07"
+    "date": "2024-03-07",
+    "formattedDate": "2024-03"
   },
   {
     "url": "https://blog.cloudflare.com/account-security-analytics-and-events/",
     "title": "Account Security Analytics and Events: better visibility over all domains",
-    "date": "2023-03-18"
+    "date": "2023-03-18",
+    "formattedDate": "2023-03"
   },
   {
     "url": "https://blog.cloudflare.com/security-analytics/",
     "title": "New! Security Analytics provides a comprehensive view across all your traffic",
-    "date": "2022-12-09"
+    "date": "2022-12-09",
+    "formattedDate": "2022-12"
   },
   {
     "url": "https://blog.cloudflare.com/new-waf-experience/",
     "title": "A new WAF experience",
-    "date": "2022-03-15"
+    "date": "2022-03-15",
+    "formattedDate": "2022-03"
   }
 ]

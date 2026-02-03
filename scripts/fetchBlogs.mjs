@@ -58,10 +58,15 @@ async function fetchBlogPosts() {
         const pubDate = extractContent(item, PUBDATE_REGEX);
 
         if (title && link && pubDate) {
+            const date = parseRssDate(pubDate);
             posts.push({
                 url: link,
                 title,
-                date: parseRssDate(pubDate)
+                date,
+                formattedDate: new Date(date).toLocaleDateString('en-CA', {
+                    month: '2-digit',
+                    year: 'numeric'
+                })
             });
         }
     }
