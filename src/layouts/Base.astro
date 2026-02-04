@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+
 interface Props {
   title: string;
   description: string;
@@ -34,7 +36,3 @@ const fullTitle = isIndex ? title : `${title} | Zhiyuan designed`;
     </footer>
   </body>
 </html>
-
-<style is:global>
-  @import "../styles/global.css";
-</style>
