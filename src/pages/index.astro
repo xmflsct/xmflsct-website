@@ -73,57 +73,64 @@ for (const year of sortedYears) {
   </section>
 
   <script>
+    interface TileCache {
+      element: HTMLElement;
+      tags: Set<string>;
+      buttons: Map<string, HTMLElement>;
+      allButtons: HTMLElement[];
+    }
+
+    let cachedTiles: TileCache[] = [];
+
+    function initCache() {
+      cachedTiles = Array.from(document.querySelectorAll('.case-tile')).map((tile) => {
+        const element = tile as HTMLElement;
+        const tags = new Set((element.dataset.tags || '').split(',').filter(Boolean));
+        const allButtons = Array.from(element.querySelectorAll('.tag-btn')) as HTMLElement[];
+        const buttons = new Map(allButtons.map(btn => [btn.dataset.tag!, btn]));
+        return { element, tags, buttons, allButtons };
+      });
+    }
+
     function selectTags() {
-      function selected(element: Element, tag: string) {
-        const btn = element.querySelector(`button[data-tag="${CSS.escape(tag)}"]`);
-        if (btn) {
-          btn.classList.remove('border-stone-600');
-          btn.classList.remove('text-stone-600');
-          btn.classList.add('border-highlight');
-          btn.classList.add('bg-highlight');
-          btn.classList.add('text-stone-100');
-        }
+      if (cachedTiles.length === 0) {
+        initCache();
       }
-      function unselected(element: Element) {
-        for (const node of element.children) {
-          if (node.nodeName === 'BUTTON') {
-            node.classList.add('border-stone-600');
-            node.classList.add('text-stone-600');
-            node.classList.remove('border-highlight');
-            node.classList.remove('bg-highlight');
-            node.classList.remove('text-stone-100');
-          }
-        }
-      }
+
       const tag = window.location.hash.slice(1);
       const isTagPresent = tag.length > 0;
-      const startPattern = tag + ',';
-      const endPattern = ',' + tag;
-      const midPattern = ',' + tag + ',';
 
-      document.querySelectorAll('.case-tile').forEach(function(tile) {
-        const tags = (tile as HTMLElement).dataset.tags || '';
+      cachedTiles.forEach(({ element, tags, buttons, allButtons }) => {
+        // Reset all buttons in this tile
+        allButtons.forEach(btn => {
+          btn.classList.add('border-stone-600', 'text-stone-600');
+          btn.classList.remove('border-highlight', 'bg-highlight', 'text-stone-100');
+        });
+
         if (isTagPresent) {
-          if (tags === tag || tags.startsWith(startPattern) || tags.endsWith(endPattern) || tags.includes(midPattern)) {
-            tile.classList.remove('opacity-40');
-            selected(tile, tag);
+          if (tags.has(tag)) {
+            element.classList.remove('opacity-40');
+            const btn = buttons.get(tag);
+            if (btn) {
+              btn.classList.remove('border-stone-600', 'text-stone-600');
+              btn.classList.add('border-highlight', 'bg-highlight', 'text-stone-100');
+            }
           } else {
-            tile.classList.add('opacity-40');
-            unselected(tile);
+            element.classList.add('opacity-40');
           }
         } else {
-          tile.classList.remove('opacity-40');
-          unselected(tile);
+          element.classList.remove('opacity-40');
         }
       });
     }
+
     // Optimization: Use DOMContentLoaded for faster interactivity
     document.addEventListener('DOMContentLoaded', () => selectTags());
     window.onhashchange = () => selectTags();
 
     document.addEventListener('click', (event) => {
       const target = event.target as HTMLElement;
-      const button = target.closest('button[data-tag]');
+      const button = target.closest('.tag-btn');
       if (button) {
         const tag = (button as HTMLElement).dataset.tag;
         if (tag) {
