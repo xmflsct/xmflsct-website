@@ -50,9 +50,10 @@ async function fetchBlogPosts() {
     // Parse items from RSS feed
     const posts = [];
     const itemPattern = /<item>([\s\S]*?)<\/item>/gi;
-    const items = xml.match(itemPattern) || [];
+    let match;
 
-    for (const item of items) {
+    while ((match = itemPattern.exec(xml)) !== null) {
+        const item = match[0];
         const title = extractContent(item, TITLE_REGEX);
         const link = extractContent(item, LINK_REGEX);
         const pubDate = extractContent(item, PUBDATE_REGEX);
