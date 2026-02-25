@@ -100,6 +100,7 @@ for (const year of sortedYears) {
       const tag = window.location.hash.slice(1);
       const isTagPresent = tag.length > 0;
 
+      // Optimization: Iterate over cached elements (O(N)) with O(1) tag lookup
       cachedTiles.forEach(({ element, tags, buttons, allButtons }) => {
         // Reset all buttons in this tile
         allButtons.forEach(btn => {
