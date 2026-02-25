@@ -11,10 +11,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const RSS_URL = 'https://blog.cloudflare.com/author/xmflsct/rss';
 const OUTPUT_PATH = join(__dirname, '../src/data/blogs.json');
 
-const TITLE_REGEX = /<title>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/i;
-const LINK_REGEX = /<link>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/link>/i;
-const PUBDATE_REGEX = /<pubDate>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/pubDate>/i;
-
 /**
  * Parse RSS date to ISO format (YYYY-MM-DD)
  */
@@ -24,14 +20,43 @@ function parseRssDate(dateStr) {
 }
 
 /**
- * Extract text content from CDATA or plain XML
+ * Extract content of a specific tag from an XML string within a given range.
+ * Handles standard text content and CDATA sections.
+ *
+ * @param {string} xml - The full XML string.
+ * @param {string} tagName - The tag name to extract (e.g., 'title').
+ * @param {number} startIndex - The index to start searching from.
+ * @param {number} endIndex - The index to stop searching at.
+ * @returns {string|null} The extracted content or null if not found.
  */
-function extractContent(xml, regex) {
-    const match = xml.match(regex);
-    if (match) {
-        return match[1].trim();
+function extractTagContent(xml, tagName, startIndex, endIndex) {
+    const startTag = `<${tagName}>`;
+    const endTag = `</${tagName}>`;
+
+    const start = xml.indexOf(startTag, startIndex);
+    if (start === -1 || start >= endIndex) {
+        return null;
     }
-    return '';
+
+    const contentStart = start + startTag.length;
+    const end = xml.indexOf(endTag, contentStart);
+
+    if (end === -1 || end > endIndex) {
+        return null;
+    }
+
+    let content = xml.slice(contentStart, end);
+
+    // Handle CDATA if present
+    const cdataStart = '<![CDATA[';
+    const cdataEnd = ']]>';
+
+    const trimmed = content.trim();
+    if (trimmed.startsWith(cdataStart) && trimmed.endsWith(cdataEnd)) {
+        content = trimmed.slice(cdataStart.length, -cdataEnd.length);
+    }
+
+    return content.trim();
 }
 
 /**
@@ -47,15 +72,21 @@ async function fetchBlogPosts() {
 
     const xml = await response.text();
 
-    // Parse items from RSS feed
+    // Parse items from RSS feed using indexOf to avoid regex overhead and memory allocation
     const posts = [];
-    const itemPattern = /<item>([\s\S]*?)<\/item>/gi;
-    const items = xml.match(itemPattern) || [];
+    let pos = 0;
 
-    for (const item of items) {
-        const title = extractContent(item, TITLE_REGEX);
-        const link = extractContent(item, LINK_REGEX);
-        const pubDate = extractContent(item, PUBDATE_REGEX);
+    while (true) {
+        const itemStart = xml.indexOf('<item>', pos);
+        if (itemStart === -1) break;
+
+        const itemEnd = xml.indexOf('</item>', itemStart);
+        if (itemEnd === -1) break;
+
+        // Extract fields within the current item's range
+        const title = extractTagContent(xml, 'title', itemStart, itemEnd);
+        const link = extractTagContent(xml, 'link', itemStart, itemEnd);
+        const pubDate = extractTagContent(xml, 'pubDate', itemStart, itemEnd);
 
         if (title && link && pubDate) {
             const date = parseRssDate(pubDate);
@@ -69,6 +100,9 @@ async function fetchBlogPosts() {
                 })
             });
         }
+
+        // Move past this item
+        pos = itemEnd + 7; // length of </item>
     }
 
     console.log(`Found ${posts.length} blog posts`);
