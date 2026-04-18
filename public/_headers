@@ -4,3 +4,11 @@
 
 /
   Link: </sitemap.xml>; rel="describedby"; type="application/xml", </robots.txt>; rel="describedby"; type="text/plain"
+
+# MCP Server Card (SEP-2127)
+# https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2127
+/.well-known/mcp/server-card.json
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET
+  Access-Control-Allow-Headers: Content-Type
+  Cache-Control: public, max-age=3600

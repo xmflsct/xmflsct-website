@@ -1,0 +1,14 @@
+{
+  "serverInfo": {
+    "name": "xmflsct",
+    "version": "1.0.0"
+  },
+  "description": "Zhiyuan's personal website and design portfolio. Product manager based in the Netherlands, working at Cloudflare.",
+  "url": "https://xmflsct.com/mcp",
+  "transport": {
+    "type": "streamable-http"
+  },
+  "capabilities": {
+    "resources": true
+  }
+}
