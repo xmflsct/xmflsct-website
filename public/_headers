@@ -1,0 +1,6 @@
+# Link response headers for agent discovery (RFC 8288)
+# https://www.rfc-editor.org/rfc/rfc8288
+# https://www.rfc-editor.org/rfc/rfc9727#section-3
+
+/
+  Link: </sitemap.xml>; rel="describedby"; type="application/xml", </robots.txt>; rel="describedby"; type="text/plain"
