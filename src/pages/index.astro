@@ -77,10 +77,10 @@ for (const year of sortedYears) {
       element: HTMLElement;
       tags: Set<string>;
       buttons: Map<string, HTMLElement>;
-      allButtons: HTMLElement[];
     }
 
     let cachedTiles: TileCache[] = [];
+    let previousTag: string = '';
 
     function initCache() {
       cachedTiles = Array.from(document.querySelectorAll('.case-tile')).map((tile) => {
@@ -88,7 +88,7 @@ for (const year of sortedYears) {
         const tags = new Set((element.dataset.tags || '').split(',').filter(Boolean));
         const allButtons = Array.from(element.querySelectorAll('.tag-btn')) as HTMLElement[];
         const buttons = new Map(allButtons.map(btn => [btn.dataset.tag!, btn]));
-        return { element, tags, buttons, allButtons };
+        return { element, tags, buttons };
       });
     }
 
@@ -98,14 +98,21 @@ for (const year of sortedYears) {
       }
 
       const tag = window.location.hash.slice(1);
+
+      // Optimization: Skip if tag hasn't changed (and we've initialized)
+      if (tag === previousTag && cachedTiles.length > 0) return;
+
       const isTagPresent = tag.length > 0;
 
-      cachedTiles.forEach(({ element, tags, buttons, allButtons }) => {
-        // Reset all buttons in this tile
-        allButtons.forEach(btn => {
-          btn.classList.add('border-stone-600', 'text-stone-600');
-          btn.classList.remove('border-highlight', 'bg-highlight', 'text-stone-100');
-        });
+      cachedTiles.forEach(({ element, tags, buttons }) => {
+        // Optimization: Only reset the previously selected button instead of iterating all buttons
+        if (previousTag) {
+          const prevBtn = buttons.get(previousTag);
+          if (prevBtn) {
+            prevBtn.classList.add('border-stone-600', 'text-stone-600');
+            prevBtn.classList.remove('border-highlight', 'bg-highlight', 'text-stone-100');
+          }
+        }
 
         if (isTagPresent) {
           if (tags.has(tag)) {
@@ -122,6 +129,8 @@ for (const year of sortedYears) {
           element.classList.remove('opacity-40');
         }
       });
+
+      previousTag = tag;
     }
 
     // Optimization: Use DOMContentLoaded for faster interactivity
