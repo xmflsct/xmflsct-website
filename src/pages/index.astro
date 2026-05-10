@@ -7,23 +7,27 @@ import blogs from '../data/blogs.json';
 
 const allCases = await getCollection('cases');
 
-// Group cases by year
-const casesByYear = allCases.reduce((acc, caseEntry) => {
-  const year = caseEntry.data.year;
-  if (!acc[year]) {
-    acc[year] = [];
-  }
-  acc[year].push(caseEntry);
-  return acc;
-}, {} as Record<number, typeof allCases>);
-
 // Sort by year (descending) and by priority within each year
-const sortedYears = Object.keys(casesByYear)
-  .map(Number)
-  .sort((a, b) => b - a);
+allCases.sort((a, b) => {
+  const yearDiff = b.data.year - a.data.year;
+  if (yearDiff !== 0) return yearDiff;
+  return a.data.priority - b.data.priority;
+});
 
-for (const year of sortedYears) {
-  casesByYear[year].sort((a, b) => a.data.priority - b.data.priority);
+// Group cases by year
+const casesByYear: Record<number, typeof allCases> = {};
+const sortedYears: number[] = [];
+let lastYear = -1;
+
+for (let i = 0, len = allCases.length; i < len; i++) {
+  const caseEntry = allCases[i];
+  const year = caseEntry.data.year;
+  if (year !== lastYear) {
+    lastYear = year;
+    casesByYear[year] = [];
+    sortedYears.push(year);
+  }
+  casesByYear[year].push(caseEntry);
 }
 ---
 
