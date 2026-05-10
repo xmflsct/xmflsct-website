@@ -85,13 +85,21 @@ for (let i = 0; i < sortedCases.length; i++) {
     let cachedTiles: TileCache[] = [];
 
     function initCache() {
-      cachedTiles = Array.from(document.querySelectorAll('.case-tile')).map((tile) => {
-        const element = tile as HTMLElement;
+      const tiles = document.querySelectorAll('.case-tile');
+      cachedTiles = new Array(tiles.length);
+      for (let i = 0; i < tiles.length; i++) {
+        const element = tiles[i] as HTMLElement;
         const tags = new Set((element.dataset.tags || '').split(',').filter(Boolean));
-        const allButtons = Array.from(element.querySelectorAll('.tag-btn')) as HTMLElement[];
-        const buttons = new Map(allButtons.map(btn => [btn.dataset.tag!, btn]));
-        return { element, tags, buttons, allButtons };
-      });
+        const buttonsNodes = element.querySelectorAll('.tag-btn');
+        const allButtons = new Array(buttonsNodes.length);
+        const buttons = new Map<string, HTMLElement>();
+        for (let j = 0; j < buttonsNodes.length; j++) {
+          const btn = buttonsNodes[j] as HTMLElement;
+          allButtons[j] = btn;
+          buttons.set(btn.dataset.tag!, btn);
+        }
+        cachedTiles[i] = { element, tags, buttons, allButtons };
+      }
     }
 
     function selectTags() {
@@ -102,12 +110,19 @@ for (let i = 0; i < sortedCases.length; i++) {
       const tag = window.location.hash.slice(1);
       const isTagPresent = tag.length > 0;
 
-      cachedTiles.forEach(({ element, tags, buttons, allButtons }) => {
+      for (let i = 0, len = cachedTiles.length; i < len; i++) {
+        const tile = cachedTiles[i];
+        const element = tile.element;
+        const tags = tile.tags;
+        const buttons = tile.buttons;
+        const allButtons = tile.allButtons;
+
         // Reset all buttons in this tile
-        allButtons.forEach(btn => {
+        for (let j = 0, blen = allButtons.length; j < blen; j++) {
+          const btn = allButtons[j];
           btn.classList.add('border-stone-600', 'text-stone-600');
           btn.classList.remove('border-highlight', 'bg-highlight', 'text-stone-100');
-        });
+        }
 
         if (isTagPresent) {
           if (tags.has(tag)) {
@@ -123,7 +138,7 @@ for (let i = 0; i < sortedCases.length; i++) {
         } else {
           element.classList.remove('opacity-40');
         }
-      });
+      }
     }
 
     // Optimization: Use DOMContentLoaded for faster interactivity
