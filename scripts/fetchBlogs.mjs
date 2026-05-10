@@ -11,12 +11,17 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const RSS_URL = 'https://blog.cloudflare.com/author/xmflsct/rss';
 const OUTPUT_PATH = join(__dirname, '../src/data/blogs.json');
 
+const dateFormatter = new Intl.DateTimeFormat('en-CA', {
+    month: '2-digit',
+    year: 'numeric'
+});
+
 /**
  * Parse RSS date to ISO format (YYYY-MM-DD)
  */
 function parseRssDate(dateStr) {
     const date = new Date(dateStr);
-    return date.toISOString().split('T')[0];
+    return date.toISOString().slice(0, 10);
 }
 
 /**
@@ -89,15 +94,12 @@ async function fetchBlogPosts() {
         const pubDate = extractTagContent(xml, 'pubDate', itemStart, itemEnd);
 
         if (title && link && pubDate) {
-            const date = parseRssDate(pubDate);
+            const dateObj = new Date(pubDate);
             posts.push({
                 url: link,
                 title,
-                date,
-                formattedDate: new Date(date).toLocaleDateString('en-CA', {
-                    month: '2-digit',
-                    year: 'numeric'
-                })
+                date: dateObj.toISOString().slice(0, 10),
+                formattedDate: dateFormatter.format(dateObj)
             });
         }
 
@@ -133,4 +135,9 @@ async function main() {
     }
 }
 
-main();
+// Check if this script is being run directly
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+    main();
+}
+
+export { parseRssDate };
