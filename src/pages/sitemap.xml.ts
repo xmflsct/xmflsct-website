@@ -14,7 +14,8 @@ export const GET: APIRoute = async ({ site }) => {
 
   // Case study pages
   for (const entry of cases) {
-    const slug = entry.id.split('/')[0];
+    const slashIndex = entry.id.indexOf('/');
+    const slug = slashIndex === -1 ? entry.id : entry.id.slice(0, slashIndex);
     urls.push({ loc: new URL(`/cases/${slug}/`, site).href, priority: '0.6' });
   }
 
