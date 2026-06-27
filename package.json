@@ -5,10 +5,9 @@
   "scripts": {
     "prebuild": "node scripts/fetchBlogs.mjs",
     "dev": "npm run prebuild && astro dev",
-    "build": "npm run prebuild && astro build",
+    "build": "npm run prebuild && astro build --force",
     "preview": "astro preview",
-    "deploy": "npm run prebuild && astro build && wrangler deploy",
-    "postinstall": "node -e \"console.log(JSON.stringify(require('wrangler/config-schema.json'), null, 2))\" > wrangler-schema.json"
+    "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
     "@astrojs/mdx": "^7.0.0",
