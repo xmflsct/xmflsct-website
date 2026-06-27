@@ -11,10 +11,10 @@
     "postinstall": "node -e \"console.log(JSON.stringify(require('wrangler/config-schema.json'), null, 2))\" > wrangler-schema.json"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^4.3.0",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.7.10",
-    "tailwindcss": "^4.1.18",
-    "wrangler": "^4.59.2"
+    "@astrojs/mdx": "^7.0.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^7.0.3",
+    "tailwindcss": "^4.3.1",
+    "wrangler": "^4.105.0"
   }
 }

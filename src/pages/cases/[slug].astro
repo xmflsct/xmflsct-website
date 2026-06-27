@@ -5,10 +5,8 @@ import Project from '../../layouts/Project.astro';
 export async function getStaticPaths() {
   const cases = await getCollection('cases');
   return cases.map((entry) => {
-    // Extract folder name from id (e.g., "closer-with-hue/index.mdx" -> "closer-with-hue")
-    const slug = entry.id.split('/')[0];
     return {
-      params: { slug },
+      params: { slug: entry.id },
       props: { entry },
     };
   });

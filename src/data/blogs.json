@@ -1,5 +1,17 @@
 [
   {
+    "url": "https://blog.cloudflare.com/client-side-security-open-to-everyone/",
+    "title": "Cloudflare Client-Side Security: smarter detection, now open to everyone",
+    "date": "2026-03-30",
+    "formattedDate": "2026-03"
+  },
+  {
+    "url": "https://blog.cloudflare.com/ai-security-for-apps-ga/",
+    "title": "AI Security for Apps is now generally available",
+    "date": "2026-03-11",
+    "formattedDate": "2026-03"
+  },
+  {
     "url": "https://blog.cloudflare.com/how-cloudflares-client-side-security-made-the-npm-supply-chain-attack-a-non/",
     "title": "How Cloudflare’s client-side security made the npm supply chain attack a non-event",
     "date": "2025-10-24",

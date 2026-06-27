@@ -1,8 +1,14 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const cases = defineCollection({
-  type: 'content',
-  schema: ({ image }) => z.object({
+  loader: glob({
+    pattern: '**/index.mdx',
+    base: './src/content/cases',
+    generateId: ({ entry }) => entry.replace(/\/index\.mdx$/, ''),
+  }),
+  schema: z.object({
     year: z.number(),
     priority: z.number(),
     title: z.string(),
@@ -13,11 +19,4 @@ const cases = defineCollection({
   }),
 });
 
-const pages = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-  }),
-});
-
-export const collections = { cases, pages };
+export const collections = { cases };
