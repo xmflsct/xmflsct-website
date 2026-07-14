@@ -2,13 +2,11 @@
 interface Props {
   url: string;
   title: string;
-  date: string;
 }
 
-const { url, title, date } = Astro.props;
+const { url, title } = Astro.props;
 ---
 
-<div class="my-4 md:my-3 flex flex-col md:flex md:flex-row md:items-center md:gap-4 overflow-hidden">
-  <span class="text-stone-400 md:text-sm shrink-0">{date}</span>
-  <a href={url} target="_blank" rel="noopener noreferrer" class="border-none text-lg">{title}</a>
+<div class="mt-2">
+  <a href={url} target="_blank" rel="noopener noreferrer" class="group border-none text-lg">{title}</a>
 </div>

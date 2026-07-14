@@ -7,6 +7,15 @@ import blogs from '../data/blogs.json';
 
 const allCases = await getCollection('cases');
 
+const blogsByYear: Record<number, typeof blogs> = {};
+
+for (const blog of blogs) {
+  const year = Number(blog.date.slice(0, 4));
+  (blogsByYear[year] ??= []).push(blog);
+}
+
+const sortedBlogYears = Object.keys(blogsByYear).map(Number).sort((a, b) => b - a);
+
 // Sort all cases once: by year (descending) and by priority within each year (ascending)
 const sortedCases = allCases.sort((a, b) => {
   const yearDiff = b.data.year - a.data.year;
@@ -43,14 +52,17 @@ for (let i = 0; i < sortedCases.length; i++) {
   </h1>
 
   <section>
-    <div>
-      {blogs.map((blog) => (
-        <BlogTile 
-          url={blog.url}
-          title={blog.title}
-          date={blog.formattedDate}
-          hn={blog.hn}
-        />
+    <div class="grid grid-cols-1 gap-y-8">
+      {sortedBlogYears.map((year) => (
+        <div>
+          <h3 class="font-sans font-semibold text-sm text-stone-300 m-0">{year}</h3>
+          {blogsByYear[year].map((blog) => (
+            <BlogTile
+              url={blog.url}
+              title={blog.title}
+            />
+          ))}
+        </div>
       ))}
     </div>
   </section>
@@ -61,7 +73,7 @@ for (let i = 0; i < sortedCases.length; i++) {
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-8">
       {sortedYears.map((year) => (
         <div>
-          <h3 class="font-sans font-semibold text-sm text-stone-400 m-0">{year}</h3>
+          <h3 class="font-sans font-semibold text-sm text-stone-300 m-0">{year}</h3>
           {casesByYear[year].map((caseEntry) => (
             <Tile 
               url={`/cases/${caseEntry.id.split('/')[0]}/`}
