@@ -1,5 +1,17 @@
 [
   {
+    "url": "https://blog.cloudflare.com/application-profiles/",
+    "title": "Enforce positive security with Cloudflare Application Profiles",
+    "date": "2026-09-29",
+    "formattedDate": "2026-09"
+  },
+  {
+    "url": "https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns/",
+    "title": "When scanners miss the attack: how Cloudflare Client-Side Security protects storefronts",
+    "date": "2026-09-16",
+    "formattedDate": "2026-09"
+  },
+  {
     "url": "https://blog.cloudflare.com/client-side-security-open-to-everyone/",
     "title": "Cloudflare Client-Side Security: smarter detection, now open to everyone",
     "date": "2026-03-30",

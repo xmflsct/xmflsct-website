@@ -79,6 +79,7 @@ async function fetchBlogPosts() {
 
     // Parse items from RSS feed using indexOf to avoid regex overhead and memory allocation
     const posts = [];
+    const seenTitles = new Set();
     let pos = 0;
 
     while (true) {
@@ -94,6 +95,13 @@ async function fetchBlogPosts() {
         const pubDate = extractTagContent(xml, 'pubDate', itemStart, itemEnd);
 
         if (title && link && pubDate) {
+            // The feed can repeat a post under another URL. Keep its first entry.
+            const titleKey = title.normalize('NFKC').replace(/\s+/g, ' ').trim().toLowerCase();
+            if (seenTitles.has(titleKey)) {
+                pos = itemEnd + 7;
+                continue;
+            }
+            seenTitles.add(titleKey);
             const dateObj = new Date(pubDate);
             posts.push({
                 url: link,
