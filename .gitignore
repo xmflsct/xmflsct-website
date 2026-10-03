@@ -10,5 +10,9 @@ node_modules/
 # Wrangler generated schema
 wrangler-schema.json
 
+# Cloudflare CLI build output and generated files
+.cloudflare/
+.wrangler/
+
 # OS
 .DS_Store
