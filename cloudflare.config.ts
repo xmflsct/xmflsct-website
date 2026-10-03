@@ -9,7 +9,6 @@ export default defineConfig({
 		domains: [
 			"xmflsct.com",
 			"www.xmflsct.com",
-			"zhiyuan.pm",
 		],
 	},
 });
